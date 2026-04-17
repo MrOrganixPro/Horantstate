@@ -888,11 +888,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.10976
+      value: -6.34
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.28253
+      value: 1.17
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -988,7 +988,7 @@ PrefabInstance:
     - target: {fileID: 1778679675689498765, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6145763415773978939, guid: 1a0c3af53eaf8d9418c55cfeac48ba69, type: 3}
+      objectReference: {fileID: -2896444744128272224, guid: f303cb23ffe49674393b84c0782e0cee, type: 3}
     - target: {fileID: 3552336886514506999, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 802.3
@@ -999,11 +999,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.25424
+      value: 6.56
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.33447
+      value: 2.34
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1103,7 +1103,7 @@ PrefabInstance:
     - target: {fileID: 1778679675689498765, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8965985345912704377, guid: 1750915393027ea48a3d249128e09360, type: 3}
+      objectReference: {fileID: -7456546105356820686, guid: 5894a62f31ad0c2419db99ea1b3f44b9, type: 3}
     - target: {fileID: 3099044728589952049, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Color.a
       value: 0.2509804
@@ -1118,11 +1118,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.55376
+      value: 5.454
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.15247
+      value: 1.094
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1186,12 +1186,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6844336284803445849, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Name
-      value: "\u0130stanbul_0"
+      value: "A\u011Fr\u0131"
       objectReference: {fileID: 0}
     - target: {fileID: 7941530876791003694, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4355272409397247203, guid: 88e416b32235f3a4887844e29f1e9315, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941530876791003694, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9213750854738608304, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.48
@@ -1570,7 +1574,7 @@ PrefabInstance:
     - target: {fileID: 1778679675689498765, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2255269084459175412, guid: 410b2042084de334da21bd6dc9453901, type: 3}
+      objectReference: {fileID: 6767357291607015455, guid: 64c9e1b9ea969aa4493a16c2e7201418, type: 3}
     - target: {fileID: 3552336886514506999, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 1503.6
@@ -1581,11 +1585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.73276
+      value: 7.21
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.13153
+      value: -3.95
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1641,7 +1645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6844336284803445849, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Name
-      value: Bilecik_0
+      value: Hakkari
       objectReference: {fileID: 0}
     - target: {fileID: 7941530876791003694, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Sprite
@@ -1868,7 +1872,7 @@ PrefabInstance:
     - target: {fileID: 1778679675689498765, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 4623144624421101238, guid: 175a03d699f5a734a9861f8e2710101a, type: 3}
+      objectReference: {fileID: 4998990965674732422, guid: 2d610b80bd37fd349b857a50c9e593ba, type: 3}
     - target: {fileID: 3552336886514506999, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 1614
@@ -1879,11 +1883,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.75276
+      value: 6.15
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8515301
+      value: -1.17
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1939,7 +1943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6844336284803445849, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Name
-      value: Sakarya_0
+      value: Van
       objectReference: {fileID: 0}
     - target: {fileID: 7941530876791003694, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Sprite
@@ -1978,11 +1982,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.58576
+      value: -5.59
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.93453
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z

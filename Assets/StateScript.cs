@@ -361,7 +361,7 @@ public class StateScript : MonoBehaviour
     {
         Greedy,
         NeutralTargeter,
-        Nemesis,
+        Yunnan,
         NotSet
     }
     IEnumerator AIattackLoop()
@@ -384,7 +384,7 @@ public class StateScript : MonoBehaviour
             {
                 case AttackBotType.Greedy: Greedy(); break;
                 case AttackBotType.NeutralTargeter: NeutralTargeter(); break;
-                case AttackBotType.Nemesis: Debug.Log("I am nemesis, but hungry cause no nemesis() done yet :("); Greedy(); break;
+                case AttackBotType.Yunnan: Yunnan(); break;
                 default: Greedy(); break;
             }
         }
@@ -448,6 +448,32 @@ public class StateScript : MonoBehaviour
         if (noneStates.Count != 0)
         {
             target = noneStates[UnityEngine.Random.Range(0, noneStates.Count)];
+        }
+        else
+        {
+            RandomAttack();
+        }
+        SendTroops();
+    }
+    struct StateAndTeam
+    {
+        public StateScript stateScript;
+        public Team team;
+    }
+    void Yunnan()
+    {
+        List<StateScript> BizimStateler = new();
+        foreach (GameObject s in GameManager.Instance.States)
+        {
+            StateScript st = s.GetComponent<StateScript>();
+            if (st.team == GameManager.Instance.PlayerTeam)
+            {
+                BizimStateler.Add(st);
+            }
+        } 
+        if (BizimStateler.Count >0)
+        {
+            target = BizimStateler[UnityEngine.Random.Range(0,BizimStateler.Count-1)].gameObject;            
         }
         else
         {
