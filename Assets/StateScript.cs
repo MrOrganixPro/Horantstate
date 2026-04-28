@@ -1,10 +1,11 @@
+using Mono.Cecil.Cil;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using System.Linq;
-using Mono.Cecil.Cil;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -260,6 +261,7 @@ public class StateScript : MonoBehaviour
                         GameObject troop = Instantiate(troopPrefab, CenterPos, Quaternion.identity);
                         TroopScript troopScript = troop.GetComponent<TroopScript>();
                         #region Assigning Vars
+                        troopScript.troopDamage = (buildStructs[1].Bool) ? 2 : 1;
                         troopScript.target = target;
                         troopScript.sender = gameObject;
                         troopScript.troopTeam = team;
@@ -330,8 +332,7 @@ public class StateScript : MonoBehaviour
             GameObject troop = Instantiate(troopPrefab, CenterPos, Quaternion.identity);
             TroopScript troopScript = troop.GetComponent<TroopScript>();
             #region Assigning Vars
-            if (isBarracks)
-                troopScript.troopDamage = 2;            
+            troopScript.troopDamage = (buildStructs[1].Bool) ? 2 : 1;
             troopScript.target = target;
             troopScript.sender = gameObject;
             troopScript.troopTeam = team;
@@ -511,8 +512,26 @@ public class StateScript : MonoBehaviour
             if (buildStructs[i].Bool)
             {
                 centerSpriteRenderer.sprite = buildStructs[i].BuildSprite;
+                BuildAction(buildStructs[i]);
                 break;
             }
+        }
+    }
+    void BuildAction(Build_Struct buildstruct)
+    {
+        BuildScript bs = null;
+        switch (buildstruct.Build)
+        {
+            case Build.Crossbow:
+                 bs = centerSpriteRenderer.gameObject.GetComponent<BuildScript>();
+                bs.team = this.team;
+                bs.Crossbow();
+                break;
+            case Build.Cannon:
+                bs = centerSpriteRenderer.gameObject.GetComponent<BuildScript>();
+                bs.team = this.team;
+                bs.Cannon();
+                break;
         }
     }
     [System.Serializable]
@@ -522,14 +541,16 @@ public class StateScript : MonoBehaviour
         public bool Bool;
         public Sprite BuildSprite;
     }
-    [SerializeField] Build_Struct[] buildStructs;
+    [SerializeField] Build_Struct[] buildStructs=new Build_Struct[Enum.GetNames(typeof(Build)).Length];
     private bool isFort,isBarracks =false;
 
     enum Build
     {
         Fort,
         Barracks,
-        build3
+        BigFort,
+        Crossbow,
+        Cannon
     }
     bool blockAttack =false;
     public void DealDamageToState(int damage, Team attackerTeam)
