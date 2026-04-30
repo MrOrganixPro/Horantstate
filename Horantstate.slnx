@@ -1,0 +1,6 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Unity.2D.SpriteShape.Editor.csproj" />
+  <Project Path="Unity.2D.SpriteShape.Runtime.csproj" />
+  <Project Path="Unity.2D.SpriteShape.EditorTests.csproj" />
+</Solution>

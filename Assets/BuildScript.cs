@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static StateScript;
 
@@ -6,8 +7,12 @@ public class BuildScript : MonoBehaviour
 {
     Coroutine CrossbowCoroutine;
     Coroutine CannonCoroutine;
-    GameObject Bolt;
+    public GameObject Bolt;
     public StateScript.Team team;
+    void Start()
+    {
+        BoltPool = new();
+    }
     public void Crossbow()
     {
         if (CrossbowCoroutine == null)
@@ -62,10 +67,34 @@ public class BuildScript : MonoBehaviour
             Vector2 direction = nearestEnemy.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             this.transform.rotation = Quaternion.Euler(0, 0, angle-90);
-            Debug.Log("BOLT");
+            SpriteRenderer Bolt = FindBoltFromPool();
+            Bolt.transform.position = this.transform.position;
+            Bolt.transform.rotation = Quaternion.Euler(0,0,angle);
+            Bolt.enabled = true;
+            Bolt.gameObject.SetActive(true);
             //Instantiate(Bolt, transform.position, Quaternion.Euler(0, 0, angle));
             yield return new WaitForSeconds(0.2f);
         }
+    }
+    List<SpriteRenderer> BoltPool;
+    SpriteRenderer FindBoltFromPool()
+    {
+        SpriteRenderer selected = null;
+        for (int i =0; i<BoltPool.Count-1;i++)
+        {
+            if (BoltPool[i] == false)
+            {
+                selected = BoltPool[i];
+                break;
+            }
+        }
+        if(selected == null)
+        {
+            GameObject newBolt =Instantiate(Bolt,transform.position,Quaternion.identity);
+            selected = newBolt.GetComponent<SpriteRenderer>();
+            BoltPool.Add(selected);            
+        }
+        return selected;
     }
     public void Cannon()
     {

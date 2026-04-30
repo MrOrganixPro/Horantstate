@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24ceda8cad4cb74c8596ebec33761a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildScript
+  Bolt: {fileID: 5465761420113718997, guid: bf163337d2b213b44b752e738ad77673, type: 3}
   team: 0
   detectionLayer:
     serializedVersion: 2
