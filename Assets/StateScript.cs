@@ -22,6 +22,12 @@ public class StateScript : MonoBehaviour
     [SerializeField] Text troopCountText;
 
     [SerializeField] private int _troopCount;
+    void Awake()
+    {
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(centerSpriteRenderer.transform.position);
+        troopCountText.transform.parent.position = screenPos;
+    }
+          
     public int troopCount
     {
         get => _troopCount;
@@ -215,9 +221,6 @@ public class StateScript : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
             troopCount += increment;
         }
-    }
-    void Awake()
-    {
     }
     void Start()
     {

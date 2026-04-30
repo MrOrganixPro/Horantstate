@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
         toBeUpdated.team = UpdatingToThisTeam;
         TeamIncrement(UpdatingToThisTeam, 1);
         toBeUpdated.isPlayersState = UpdatingToThisTeam == PlayerTeam;
+        toBeUpdated.transform.GetChild(0).GetComponent<BuildScript>().team = toBeUpdated.team;
         if ((GetTeamStats(PlayerTeam).count + GetTeamStats(StateScript.Team.None).count) == States.Length)
             Debug.Log("You Won");
         if (GetTeamStats(PlayerTeam).count==0)
