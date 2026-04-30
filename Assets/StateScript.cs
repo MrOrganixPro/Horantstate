@@ -1,4 +1,5 @@
 using Mono.Cecil.Cil;
+using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class StateScript : MonoBehaviour
 {
+    bool isMortar = false;
     public float spaceBetweenTroops = 0.15f;
     public AttackBotType AttackBotPreset = AttackBotType.NotSet;
     [SerializeField] private CenterValue cv;
@@ -60,14 +62,7 @@ public class StateScript : MonoBehaviour
         }
     }
     #endregion team Property
-    Color[] teamColors =
-    {
-        new Color(1,1,1),
-        new Color(1,0.5f,0.5f),
-        new Color(0.5f,0.72f,0.93f),
-        new Color(0.46f,1,0.62f),
-        new Color(1,0.95f,0.56f)
-    };
+    
     #region isPlayersState Property
     [SerializeField] private bool _isPlayersState;
     public bool isPlayersState
@@ -103,26 +98,7 @@ public class StateScript : MonoBehaviour
     {
         foreach (SpriteRenderer s in Visuals.renderers)
         {
-            Color selectedColor = default;
-            switch (_team)
-            {
-                case Team.Red:
-                    selectedColor = teamColors[1];
-                    break;
-                case Team.Blue:
-                    selectedColor = teamColors[2];
-                    break;
-                case Team.Green:
-                    selectedColor = teamColors[3];
-                    break;
-                case Team.Yellow:
-                    selectedColor = teamColors[4];
-                    break;
-                case Team.None:
-                default:
-                    selectedColor = teamColors[0];
-                    break;
-            }
+            Color selectedColor = GameManager.Instance.GetTeamColor(team);
             if (s.CompareTag("Darken"))
                 s.color = ColorUtils.Darken(selectedColor, cv.centerDarkness);
             else
@@ -130,26 +106,7 @@ public class StateScript : MonoBehaviour
         }
         foreach(UnityEngine.UI.Image i in Visuals.images)
         {
-            Color selectedColor = default;
-            switch (_team)
-            {
-                case Team.Red:
-                    selectedColor = teamColors[1];
-                    break;
-                case Team.Blue:
-                    selectedColor = teamColors[2];
-                    break;
-                case Team.Green:
-                    selectedColor = teamColors[3];
-                    break;
-                case Team.Yellow:
-                    selectedColor = teamColors[4];
-                    break;
-                case Team.None:
-                default:
-                    selectedColor = teamColors[0];
-                    break;
-            }
+            Color selectedColor = GameManager.Instance.GetTeamColor(team);
             if (i.CompareTag("Darken"))
                 selectedColor = ColorUtils.Darken(selectedColor, cv.centerDarkness);
             bool hasBuilding = false;
@@ -238,11 +195,19 @@ public class StateScript : MonoBehaviour
 
     public void SendTroops()
     {
-        if (CurrentCR != null)
+        if(isMortar)
+        {
+            if(CurrentCR==null)
+                CurrentCR=StartCoroutine(SendMortarShell());
+        }
+        else
+        {
+            if (CurrentCR != null)
         {
             StopCoroutine(CurrentCR);
         }
-        CurrentCR = StartCoroutine(sendingLoop());
+            CurrentCR = StartCoroutine(sendingLoop());            
+        }
     }
     public void StopSendingTroops()
     {
@@ -251,6 +216,19 @@ public class StateScript : MonoBehaviour
             StopCoroutine(CurrentCR);
         }
     }
+    IEnumerator SendMortarShell()
+    {
+        if(troopCount>=30)
+        {
+            troopCount-=30;
+            MortarShellScript shellScript= Instantiate(MortarShell,centerSpriteRenderer.transform.position,Quaternion.Euler(0,0,90)).GetComponent<MortarShellScript>();
+            shellScript.target = target;
+            shellScript.team = this.team;
+            yield return new WaitForSeconds(6); 
+        }
+        CurrentCR=null;
+    }
+    [SerializeField]GameObject MortarShell;
     IEnumerator sendingLoop()
     {
         Vector3 CenterPos = StateArea.transform.position;
@@ -535,6 +513,9 @@ public class StateScript : MonoBehaviour
                 bs.team = this.team;
                 bs.Cannon();
                 break;
+            case Build.Mortar:
+                isMortar=true;
+                break;
         }
     }
     [System.Serializable]
@@ -553,7 +534,8 @@ public class StateScript : MonoBehaviour
         Barracks,
         BigFort,
         Crossbow,
-        Cannon
+        Cannon,
+        Mortar
     }
     bool blockAttack =false;
     public void DealDamageToState(int damage, Team attackerTeam)

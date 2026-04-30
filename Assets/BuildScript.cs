@@ -146,7 +146,7 @@ public class BuildScript : MonoBehaviour
             yield return new WaitForSeconds(cannonCooldown);
         }
         }
-        float detectionRadius = 4f;
+    float detectionRadius = 4f;
     public LayerMask AllLayers;
     public LayerMask detectionLayer; // Set this in the Inspector to avoid hitting everything
 

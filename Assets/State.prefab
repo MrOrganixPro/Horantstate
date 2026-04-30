@@ -199,6 +199,7 @@ MonoBehaviour:
   target: {fileID: 0}
   troopPrefab: {fileID: 2107546413815002398, guid: afce6d8a83c910e46bdb8fd88870b8ac, type: 3}
   centerSpriteRenderer: {fileID: 7941530876791003694}
+  MortarShell: {fileID: 188647194317346462, guid: 9e84ff01eedce754586ee56b6654b49e, type: 3}
   buildStructs:
   - Build: 0
     Bool: 0
@@ -215,6 +216,9 @@ MonoBehaviour:
   - Build: 4
     Bool: 0
     BuildSprite: {fileID: -633728959643716388, guid: 2b4011cd95cde7a4fb0ccf8baf09fec6, type: 3}
+  - Build: 5
+    Bool: 0
+    BuildSprite: {fileID: 21300000, guid: 62c9936edd9aed645a05fd6576b08cd8, type: 3}
 --- !u!1 &7414077596298683285
 GameObject:
   m_ObjectHideFlags: 0

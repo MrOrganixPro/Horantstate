@@ -5,7 +5,14 @@ using static StateScript;
 public class GameManager : MonoBehaviour
 {
     public StateScript.Team PlayerTeam;
-
+    public Color[] teamColors =
+    {
+        new Color(1,1,1),
+        new Color(1,0.5f,0.5f),
+        new Color(0.5f,0.72f,0.93f),
+        new Color(0.46f,1,0.62f),
+        new Color(1,0.95f,0.56f)
+    };
     public int AttackIntervalLower;
     public int AttackIntervalUpper;
     public static GameManager Instance { get; private set; }
@@ -21,6 +28,23 @@ public class GameManager : MonoBehaviour
         {
             count += i;
         }
+    }
+    public Color GetTeamColor(Team team)
+    {
+        switch (team)
+            {
+                case Team.Red:
+                    return teamColors[1];
+                case Team.Blue:
+                    return teamColors[2];
+                case Team.Green:
+                    return teamColors[3];
+                case Team.Yellow:
+                    return teamColors[4];
+                case Team.None:
+                default:
+                    return teamColors[0];
+            }
     }
     private void Awake()
     {
@@ -86,7 +110,7 @@ public class GameManager : MonoBehaviour
                 return teamStats[0];
         }
     }
-    public Color GetTeamColor(Team team)
+    public Color GetTeamColorSharp(Team team)
     {
         switch (team)
         {
