@@ -398,10 +398,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24ceda8cad4cb74c8596ebec33761a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildScript
+  muzzleFlash: {fileID: 7687795348887547841, guid: 5192ceb29b3d0f03f9843cc18ffa04e1, type: 3}
   CannonBall: {fileID: 188647194317346462, guid: 76c3ba2ebd7df0b4ebde0acb8104ee1a, type: 3}
   lineRenderer: {fileID: 7880252813640165042}
   team: 0
-  cannonCooldown: 0.2
+  cannonCooldown: 3.5
   crossbowCooldown: 0.2
   AllLayers:
     serializedVersion: 2

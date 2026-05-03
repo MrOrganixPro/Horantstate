@@ -5,6 +5,7 @@ using static StateScript;
 
 public class BuildScript : MonoBehaviour
 {
+    public GameObject muzzleFlash;
     Coroutine CrossbowCoroutine;
     Coroutine CannonCoroutine;
     [SerializeField]GameObject CannonBall;
@@ -141,11 +142,39 @@ public class BuildScript : MonoBehaviour
             this.transform.rotation = Quaternion.Euler(0, 0, angle);
             //
             //
+            StartCoroutine(CannonShock());
+            float angleRad = angle * Mathf.Deg2Rad;
+            Vector2 forwardDir = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+            Vector2 leftDir = new Vector2(-Mathf.Sin(angleRad), Mathf.Cos(angleRad)); // Rotated 90 degrees left
+            Vector2 muzzlePosition = (Vector2)transform.position + (forwardDir * 1.2f) + (leftDir * 0.05f);
+            GameObject mFlash = Instantiate(muzzleFlash,muzzlePosition,Quaternion.Euler(0,0,angle));
+            yield return hundredth;
+            yield return hundredth;
+            Destroy(mFlash);
             GameObject top = Instantiate(CannonBall, transform.position, Quaternion.Euler(0,0,angle));
             top.GetComponent<CannonBallScript>().detectionLayers = this.detectionLayer;
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(CannonBackUp());
             yield return new WaitForSeconds(cannonCooldown);
         }
+    }
+    WaitForSeconds hundredth = new WaitForSeconds(0.01f);
+    IEnumerator CannonShock()
+    {
+        for (int i=0; i<5;i++)
+        {
+            transform.position += -transform.right*(1f/10f);
+            yield return hundredth;
         }
+    }
+    IEnumerator CannonBackUp()
+    {
+        for(int i=0; i<50;i++)
+        {
+            transform.position += transform.right*(1f/100f);
+            yield return hundredth;
+        }
+    }
     float detectionRadius = 4f;
     public LayerMask AllLayers;
     public LayerMask detectionLayer; // Set this in the Inspector to avoid hitting everything

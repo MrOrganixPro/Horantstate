@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TroopScript
   troopDamage: 1
-  speed: 2.5
+  speed: 2
   sender: {fileID: 0}
   target: {fileID: 0}
   spriteRenderer: {fileID: 5837875380422142977}

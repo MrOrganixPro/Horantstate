@@ -15,543 +15,573 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class StateScript : MonoBehaviour
 {
-    bool isMortar = false;
-    public float spaceBetweenTroops = 0.15f;
-    public AttackBotType AttackBotPreset = AttackBotType.NotSet;
-    [SerializeField] private CenterValue cv;
-    Coroutine CurrentCR;
-    [SerializeField] Collider2D StateArea;
-    [SerializeField] Text troopCountText;
+bool isMortar = false;
+public float spaceBetweenTroops = 0.15f;
+public AttackBotType AttackBotPreset = AttackBotType.NotSet;
+[SerializeField] private CenterValue cv;
+Coroutine CurrentCR;
+[SerializeField] Collider2D StateArea;
+[SerializeField] Text troopCountText;
 
-    [SerializeField] private int _troopCount;
-    void Awake()
+[SerializeField] private int _troopCount;
+void Awake()
+{
+    Vector3 screenPos = Camera.main.WorldToScreenPoint(centerSpriteRenderer.transform.position);
+    troopCountText.transform.parent.position = screenPos;
+}
+        
+public int troopCount
+{
+    get => _troopCount;
+    set
     {
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(centerSpriteRenderer.transform.position);
-        troopCountText.transform.parent.position = screenPos;
-    }
-          
-    public int troopCount
-    {
-        get => _troopCount;
-        set
-        {
-            _troopCount = value;
-            UpdateTroopCountText();
-        }        
-    }
-    [SerializeField]StateVisuals Visuals;
-    [Serializable]
-    struct StateVisuals
-    {
-        public Renderer[] renderers;
-        public UnityEngine.UI.Image[] images;
-    }
-    [SerializeField] SpriteRenderer Transparent;
-    #region team Property
-
-    [SerializeField] private Team _team;
-    public Team team
-    {
-        get => _team;
-        set
-        {
-            _team = value;
-            StopSendingTroops();
-            UpdateVisuals();
-            TransparencyFix();
-        }
-    }
-    #endregion team Property
-    
-    #region isPlayersState Property
-    [SerializeField] private bool _isPlayersState;
-    public bool isPlayersState
-    {
-        get => _isPlayersState;
-        set
-        {
-            _isPlayersState = value;
-            if (!_isPlayersState && team != Team.None)
-            {
-                StartCoroutine(AIattackLoop());
-            }
-        }
-    }
-    #endregion isPlayersState Property
-    [HideInInspector] public GameObject target;
-    public GameObject troopPrefab;
-    public SpriteRenderer centerSpriteRenderer;
-    
-    public enum Team
-    {
-        Blue,
-        Red,
-        Green,
-        Yellow,
-        None
-    }
-    void UpdateTroopCountText()
-    {
-        troopCountText.text = troopCount.ToString();
-    }
-    void UpdateVisuals()
-    {
-        foreach (SpriteRenderer s in Visuals.renderers)
-        {
-            Color selectedColor = GameManager.Instance.GetTeamColor(team);
-            if (s.CompareTag("Darken"))
-                s.color = ColorUtils.Darken(selectedColor, cv.centerDarkness);
-            else
-                s.color = selectedColor;
-        }
-        foreach(UnityEngine.UI.Image i in Visuals.images)
-        {
-            Color selectedColor = GameManager.Instance.GetTeamColor(team);
-            if (i.CompareTag("Darken"))
-                selectedColor = ColorUtils.Darken(selectedColor, cv.centerDarkness);
-            bool hasBuilding = false;
-            foreach(var bs in buildStructs)
-            {
-                if (bs.Bool)
-                {
-                    hasBuilding = true;
-                    break;
-                }
-            }
-            selectedColor = (hasBuilding)?new Color(selectedColor.r, selectedColor.g, selectedColor.b, 0.5f): new Color(selectedColor.r, selectedColor.g, selectedColor.b, 0.8f) ;
-            i.color = selectedColor;
-        }
-    }
-    void TransparencyFix()
-    {
-        Color c = ColorUtils.Darken(new Color(Transparent.color.r, Transparent.color.g, Transparent.color.b), 0.4f);
-        Transparent.color = new Color(c.r, c.g, c.b, 0.3f);
-    }
-    IEnumerator TroopIncrementCR()
-    {
-        float waitTime;
-        int increment;
-        while (true)
-        {
-            increment = 1;
-            waitTime = 0.5f;
-            if (team == Team.None)
-            {
-                yield return new WaitForSeconds(waitTime);
-                if (troopCount < 10)
-                    troopCount += increment;
-                continue;
-            }
-            else
-            {
-                switch (troopCount)
-                {
-                    case < 10:
-                        break;
-                    case >= 10 and < 30:
-                        waitTime += 0.5f;
-                        break;
-                    case >= 30 and < 50:
-                        waitTime += 1f;
-                        break;
-                    case >= 50 and < 100:
-                        waitTime += 1.5f;
-                        break;
-                    case >= 100 and < 150:
-                        waitTime += 2;
-                        increment = 0;
-                        break;
-                    case >= 150 and < 200:
-                        waitTime += 1;
-                        increment = -1;
-                        break;
-                    case >= 200 and < 500:
-                        increment = -1;
-                        break;
-                    case >= 500:
-                        waitTime -= 0.25f;
-                        increment = -1;
-                        break;
-
-                }
-            }
-            yield return new WaitForSeconds(waitTime);
-            troopCount += increment;
-        }
-    }
-    void Start()
-    {
-        UpdateEverything();
-    }
-    private void UpdateEverything()
-    {
-        BuildUpdate();
+        _troopCount = value;
         UpdateTroopCountText();
-        TransparencyFix();
-        StartCoroutine(TroopIncrementCR());
-        UpdateVisuals();
-    }
+    }        
+}
+[SerializeField]StateVisuals Visuals;
+[Serializable]
+struct StateVisuals
+{
+    public Renderer[] renderers;
+    public UnityEngine.UI.Image[] images;
+}
+[SerializeField] SpriteRenderer Transparent;
+#region team Property
 
-
-    public void SendTroops()
+[SerializeField] private Team _team;
+public Team team
+{
+    get => _team;
+    set
     {
-        if(isMortar)
+        _team = value;
+        StopSendingTroops();
+        UpdateVisuals();
+        TransparencyFix();
+    }
+}
+#endregion team Property
+
+#region isPlayersState Property
+[SerializeField] private bool _isPlayersState;
+public bool isPlayersState
+{
+    get => _isPlayersState;
+    set
+    {
+        _isPlayersState = value;
+        if (!_isPlayersState && team != Team.None)
         {
-            if(CurrentCR==null)
-                CurrentCR=StartCoroutine(SendMortarShell());
+            StartCoroutine(AIattackLoop());
+        }
+    }
+}
+#endregion isPlayersState Property
+public GameObject target;
+public GameObject troopPrefab;
+public SpriteRenderer centerSpriteRenderer;
+
+public enum Team
+{
+    Blue,
+    Red,
+    Green,
+    Yellow,
+    None
+}
+void UpdateTroopCountText()
+{
+    troopCountText.text = troopCount.ToString();
+}
+void UpdateVisuals()
+{
+    foreach (SpriteRenderer s in Visuals.renderers)
+    {
+        Color selectedColor = GameManager.Instance.GetTeamColor(team);
+        if (s.CompareTag("Darken"))
+            s.color = ColorUtils.Darken(selectedColor, cv.centerDarkness);
+        else
+            s.color = selectedColor;
+    }
+    foreach(UnityEngine.UI.Image i in Visuals.images)
+    {
+        Color selectedColor = GameManager.Instance.GetTeamColor(team);
+        if (i.CompareTag("Darken"))
+            selectedColor = ColorUtils.Darken(selectedColor, cv.centerDarkness);
+        bool hasBuilding = false;
+        foreach(var bs in buildStructs)
+        {
+            if (bs.Bool)
+            {
+                hasBuilding = true;
+                break;
+            }
+        }
+        selectedColor = (hasBuilding)?new Color(selectedColor.r, selectedColor.g, selectedColor.b, 0.5f): new Color(selectedColor.r, selectedColor.g, selectedColor.b, 0.8f) ;
+        i.color = selectedColor;
+    }
+}
+void TransparencyFix()
+{
+    Color c = ColorUtils.Darken(new Color(Transparent.color.r, Transparent.color.g, Transparent.color.b), 0.4f);
+    Transparent.color = new Color(c.r, c.g, c.b, 0.3f);
+}
+IEnumerator TroopIncrementCR()
+{
+    float waitTime;
+    int increment;
+    while (true)
+    {
+        increment = 1;
+        waitTime = 0.5f;
+        if (team == Team.None)
+        {
+            yield return new WaitForSeconds(waitTime);
+            if (troopCount < 10)
+                troopCount += increment;
+            continue;
         }
         else
         {
-            if (CurrentCR != null)
-        {
-            StopCoroutine(CurrentCR);
+            switch (troopCount)
+            {
+                case < 10:
+                    break;
+                case >= 10 and < 30:
+                    waitTime += 0.5f;
+                    break;
+                case >= 30 and < 50:
+                    waitTime += 1f;
+                    break;
+                case >= 50 and < 100:
+                    waitTime += 1.5f;
+                    break;
+                case >= 100 and < 150:
+                    waitTime += 2;
+                    increment = 0;
+                    break;
+                case >= 150 and < 200:
+                    waitTime += 1;
+                    increment = -1;
+                    break;
+                case >= 200 and < 500:
+                    increment = -1;
+                    break;
+                case >= 500:
+                    waitTime -= 0.25f;
+                    increment = -1;
+                    break;
+
+            }
         }
-            CurrentCR = StartCoroutine(sendingLoop());            
+        yield return new WaitForSeconds(waitTime);
+        troopCount += increment;
+    }
+}
+void Start()
+{
+    UpdateEverything();
+}
+private void UpdateEverything()
+{
+    BuildUpdate();
+    UpdateTroopCountText();
+    TransparencyFix();
+    StartCoroutine(TroopIncrementCR());
+    UpdateVisuals();
+}
+
+
+public void SendTroops()
+{
+    if (isMortar)
+    {
+        Debug.Log($"Mortar Check: CurrentCR = {CurrentCR}, Troops = {troopCount}");
+
+        if (troopCount >= 30)
+        {
+            if (CurrentCR == null)
+            {
+                CurrentCR = StartCoroutine(SendMortarShell());
+            }
+            else
+            {
+                Debug.Log("Mortar is currently cooling down or busy.");
+            }
+        }
+        else
+        {
+            Debug.Log("Not enough troops to fire the mortar! (Requires at least 30)");
         }
     }
-    public void StopSendingTroops()
+    else
     {
         if (CurrentCR != null)
         {
             StopCoroutine(CurrentCR);
+            CurrentCR = null;
         }
+        CurrentCR = StartCoroutine(sendingLoop());            
     }
-    IEnumerator SendMortarShell()
+}
+public void StopSendingTroops()
+{
+    if(isMortar) 
+        return;
+    if (CurrentCR != null)
     {
-        if(troopCount>=30)
-        {
-            troopCount-=30;
-            MortarShellScript shellScript= Instantiate(MortarShell,centerSpriteRenderer.transform.position,Quaternion.Euler(0,0,90)).GetComponent<MortarShellScript>();
-            shellScript.target = target;
-            shellScript.team = this.team;
-            yield return new WaitForSeconds(6); 
-        }
+        StopCoroutine(CurrentCR);
         CurrentCR=null;
     }
-    [SerializeField]GameObject MortarShell;
-    IEnumerator sendingLoop()
-    {
-        Vector3 CenterPos = StateArea.transform.position;
+}
+IEnumerator SendMortarShell()
+{
+    troopCount -= 30;
 
-        switch (troopCount)
-        {
-            case < 20:
-                {
-                    while (troopCount > 0)
-                    {
-                        GameObject troop = Instantiate(troopPrefab, CenterPos, Quaternion.identity);
-                        TroopScript troopScript = troop.GetComponent<TroopScript>();
-                        #region Assigning Vars
-                        troopScript.troopDamage = (buildStructs[1].Bool) ? 2 : 1;
-                        troopScript.target = target;
-                        troopScript.sender = gameObject;
-                        troopScript.troopTeam = team;
-                        troop.gameObject.layer = LayerAssignment(troopScript.troopTeam);
-                        #endregion
-                        TroopScript ts = troop.GetComponent<TroopScript>();
-                        ts.StartCollisionCheck();
-                        ts.March();
-                        troopCount--;
-                        yield return new WaitForSeconds(0.2f);
-                    }
-                }
-                break;
-            case < 30:
-                {
-                    while (troopCount > 1)
-                    {
-                        MultInstantiation(2, CenterPos);
-                        yield return new WaitForSeconds(0.18f);
-                    }
-                }
-                break;
-            case < 40:
-                {
-                    while (troopCount > 2)
-                    {
-                        MultInstantiation(3, CenterPos);
-                        yield return new WaitForSeconds(0.16f);
-                    }
-                }
-                break;
-            case < 50:
-                {
-                    while (troopCount > 3)
-                    {
-                        MultInstantiation(4, CenterPos);
-                        yield return new WaitForSeconds(0.14f);
-                    }
-                }
-                break;
-            case < 60:
-                {
-                    while (troopCount > 4)
-                    {
-                        MultInstantiation(5, CenterPos);
-                        yield return new WaitForSeconds(0.12f);
-                    }
-                }
-                break;
-            case >= 60:
-                {
-                    while (troopCount > 5)
-                    {
-                        MultInstantiation(6, CenterPos);
-                        yield return new WaitForSeconds(0.1f);
-                    }
-                }
-                break;
-        }
-        yield return new WaitForSeconds(0.2f);
+    // Safety check: Don't spawn if references are missing
+    if (MortarShell != null && centerSpriteRenderer != null&&target!=null)
+    {
+        MortarShellScript shellScript = Instantiate(MortarShell, centerSpriteRenderer.transform.position, Quaternion.Euler(0, 0, 90)).GetComponent<MortarShellScript>();
+        shellScript.mortar = centerSpriteRenderer.gameObject;
+        shellScript.target = target;
+        shellScript.team = this.team;
+        StartCoroutine(shellScript.ShellShot());
+    }
+    else
+    {
+        Debug.LogError("MortarShell or centerSpriteRenderer is missing in SendMortarShell!");
+    }   
 
-        CurrentCR = null;
-    }
-    void MultInstantiation(int unitsToDeploy, Vector3 CenterPos)
+    yield return new WaitForSeconds(6f);
+    
+    CurrentCR=null;
+}
+[SerializeField]GameObject MortarShell;
+IEnumerator sendingLoop()
+{
+    Debug.Log("SendingLoop(troop)");
+    Vector3 CenterPos = StateArea.transform.position;
+
+    switch (troopCount)
     {
-        for (int i = 0; i < unitsToDeploy; i++)
-        {
-            GameObject troop = Instantiate(troopPrefab, CenterPos, Quaternion.identity);
-            TroopScript troopScript = troop.GetComponent<TroopScript>();
-            #region Assigning Vars
-            troopScript.troopDamage = (buildStructs[1].Bool) ? 2 : 1;
-            troopScript.target = target;
-            troopScript.sender = gameObject;
-            troopScript.troopTeam = team;
-            troop.gameObject.layer = LayerAssignment(troopScript.troopTeam);
-            #endregion
-            TroopScript ts = troop.GetComponent<TroopScript>();
-            bool troopIsInBetween = i != 0 && i < (unitsToDeploy - 1);
-            ts.ArmyOrder(i, unitsToDeploy, 0.15f, troopIsInBetween);
-            //0.4f, i, allSoldiers.Length, 1.2f
-            ts.StartCollisionCheck();
-            ts.March();
-            troopCount--;
-        }
-    }
-    int LayerAssignment(Team t)
-    {
-        switch (t)
-        {
-            case StateScript.Team.Blue: return 6;
-            case StateScript.Team.Red: return 7;
-            case StateScript.Team.Green: return 8;
-            case StateScript.Team.Yellow: return 9;
-            default: return -1;
-        }
-    }
-    public enum AttackBotType
-    {
-        Greedy,
-        NeutralTargeter,
-        Yunnan,
-        NotSet
-    }
-    IEnumerator AIattackLoop()
-    {
-        AttackBotType AttackBot = default;
-        if (AttackBotPreset == AttackBotType.NotSet)
-        {
-            AttackBot = (AttackBotType)UnityEngine.Random.Range(0, (int)AttackBotType.NotSet);
-        }
-        else
-        {
-            AttackBot = AttackBotPreset;
-        }
-        while (!isPlayersState)
-        {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(GameManager.Instance.AttackIntervalLower, GameManager.Instance.AttackIntervalUpper) / 100.0f);
-            if (isPlayersState)
-                break;
-            switch (AttackBot)
+        case < 20:
             {
-                case AttackBotType.Greedy: Greedy(); break;
-                case AttackBotType.NeutralTargeter: NeutralTargeter(); break;
-                case AttackBotType.Yunnan: Yunnan(); break;
-                default: Greedy(); break;
-            }
-        }
-        yield return null;
-    }
-    struct StateAndHealth
-    {
-        public GameObject State;
-        public int Count;
-    }
-    void Greedy()
-    {
-        StateAndHealth[] lowestHealth = new StateAndHealth[3];
-        lowestHealth[0].Count = 9999; lowestHealth[1].Count = 9999; lowestHealth[2].Count = 9999;
-        GameObject selected = null;
-        foreach (GameObject s in GameManager.Instance.States)
-        {
-            StateScript st = s.GetComponent<StateScript>();
-            if (st.team != team)
-            {
-                if (st.troopCount < lowestHealth[0].Count)
+                while (troopCount > 0)
                 {
-                    lowestHealth[2].Count = lowestHealth[1].Count; lowestHealth[2].State = lowestHealth[1].State;
-                    lowestHealth[1].Count = lowestHealth[0].Count; lowestHealth[1].State = lowestHealth[0].State;
-                    lowestHealth[0].Count = st.troopCount; lowestHealth[0].State = s;
-                }
-                else if (st.troopCount < lowestHealth[1].Count)
-                {
-                    lowestHealth[2].Count = lowestHealth[1].Count; lowestHealth[2].State = lowestHealth[1].State;
-                    lowestHealth[1].Count = st.troopCount; lowestHealth[1].State = s;
-                }
-                else if (st.troopCount < lowestHealth[2].Count)
-                {
-                    lowestHealth[2].Count = st.troopCount; lowestHealth[2].State = s;
+                    GameObject troop = Instantiate(troopPrefab, CenterPos, Quaternion.identity);
+                    TroopScript troopScript = troop.GetComponent<TroopScript>();
+                    #region Assigning Vars
+                    troopScript.troopDamage = (buildStructs[1].Bool) ? 2 : 1;
+                    troopScript.target = target;
+                    troopScript.sender = gameObject;
+                    troopScript.troopTeam = team;
+                    troop.gameObject.layer = LayerAssignment(troopScript.troopTeam);
+                    #endregion
+                    TroopScript ts = troop.GetComponent<TroopScript>();
+                    ts.StartCollisionCheck();
+                    ts.March();
+                    troopCount--;
+                    yield return new WaitForSeconds(0.2f);
                 }
             }
-        }
-        if (lowestHealth[0].State == null)
-            return;
-        if (lowestHealth[1].State == null)
-            selected = lowestHealth[0].State;
-        else if (lowestHealth[2].State == null)
-            selected = lowestHealth[UnityEngine.Random.Range(0, 2)].State;
-        else
-            selected = lowestHealth[UnityEngine.Random.Range(0, 3)].State;
-        target = selected;
-        SendTroops();
-    }
-    void NeutralTargeter()
-    {
-        List<GameObject> noneStates = new();
-
-        foreach (GameObject s in GameManager.Instance.States)
-        {
-            StateScript st = s.GetComponent<StateScript>();
-            if (st.team == Team.None)
+            break;
+        case < 30:
             {
-                noneStates.Add(s);
+                while (troopCount > 1)
+                {
+                    MultInstantiation(2, CenterPos);
+                    yield return new WaitForSeconds(0.18f);
+                }
             }
-        }
-        if (noneStates.Count != 0)
-        {
-            target = noneStates[UnityEngine.Random.Range(0, noneStates.Count)];
-        }
-        else
-        {
-            RandomAttack();
-        }
-        SendTroops();
-    }
-    struct StateAndTeam
-    {
-        public StateScript stateScript;
-        public Team team;
-    }
-    void Yunnan()
-    {
-        List<StateScript> BizimStateler = new();
-        foreach (GameObject s in GameManager.Instance.States)
-        {
-            StateScript st = s.GetComponent<StateScript>();
-            if (st.team == GameManager.Instance.PlayerTeam)
+            break;
+        case < 40:
             {
-                BizimStateler.Add(st);
+                while (troopCount > 2)
+                {
+                    MultInstantiation(3, CenterPos);
+                    yield return new WaitForSeconds(0.16f);
+                }
             }
-        } 
-        if (BizimStateler.Count >0)
-        {
-            target = BizimStateler[UnityEngine.Random.Range(0,BizimStateler.Count-1)].gameObject;            
-        }
-        else
-        {
-            RandomAttack();
-        }
-        SendTroops();
-    }
-    void Shuffle(List<int> list)
-    {
-        for (int i = list.Count - 1; i > 0; i--)
-        {
-            int randomIndex = UnityEngine.Random.Range(0, i + 1);
-
-
-            int temp = list[i];
-            list[i] = list[randomIndex];
-            list[randomIndex] = temp;
-        }
-    }
-    void RandomAttack()
-    {
-        List<int> randomizedStates = Enumerable.Range(0, GameManager.Instance.States.Length).ToList();
-        Shuffle(randomizedStates);
-        for (int i = 0; i < randomizedStates.Count; i++)
-        {
-            target = GameManager.Instance.States[i];
-            if (target.GetComponent<StateScript>().team != this.team)
-                break;
-        }
-    }
-    void BuildUpdate()
-    {
-        for (int i = 0; i < buildStructs.Length; i++)
-        {
-            if (buildStructs[i].Bool)
+            break;
+        case < 50:
             {
-                centerSpriteRenderer.sprite = buildStructs[i].BuildSprite;
-                BuildAction(buildStructs[i]);
-                break;
+                while (troopCount > 3)
+                {
+                    MultInstantiation(4, CenterPos);
+                    yield return new WaitForSeconds(0.14f);
+                }
+            }
+            break;
+        case < 60:
+            {
+                while (troopCount > 4)
+                {
+                    MultInstantiation(5, CenterPos);
+                    yield return new WaitForSeconds(0.12f);
+                }
+            }
+            break;
+        case >= 60:
+            {
+                while (troopCount > 5)
+                {
+                    MultInstantiation(6, CenterPos);
+                    yield return new WaitForSeconds(0.1f);
+                }
+            }
+            break;
+    }
+    yield return new WaitForSeconds(0.2f);
+
+    CurrentCR = null;
+}
+void MultInstantiation(int unitsToDeploy, Vector3 CenterPos)
+{
+    for (int i = 0; i < unitsToDeploy; i++)
+    {
+        GameObject troop = Instantiate(troopPrefab, CenterPos, Quaternion.identity);
+        TroopScript troopScript = troop.GetComponent<TroopScript>();
+        #region Assigning Vars
+        troopScript.troopDamage = (buildStructs[1].Bool) ? 2 : 1;
+        troopScript.target = target;
+        troopScript.sender = gameObject;
+        troopScript.troopTeam = team;
+        troop.gameObject.layer = LayerAssignment(troopScript.troopTeam);
+        #endregion
+        TroopScript ts = troop.GetComponent<TroopScript>();
+        bool troopIsInBetween = i != 0 && i < (unitsToDeploy - 1);
+        ts.ArmyOrder(i, unitsToDeploy, 0.15f, troopIsInBetween);
+        //0.4f, i, allSoldiers.Length, 1.2f
+        ts.StartCollisionCheck();
+        ts.March();
+        troopCount--;
+    }
+}
+int LayerAssignment(Team t)
+{
+    switch (t)
+    {
+        case StateScript.Team.Blue: return 6;
+        case StateScript.Team.Red: return 7;
+        case StateScript.Team.Green: return 8;
+        case StateScript.Team.Yellow: return 9;
+        default: return -1;
+    }
+}
+public enum AttackBotType
+{
+    Greedy,
+    NeutralTargeter,
+    Yunnan,
+    NotSet
+}
+IEnumerator AIattackLoop()
+{
+    AttackBotType AttackBot = default;
+    if (AttackBotPreset == AttackBotType.NotSet)
+    {
+        AttackBot = (AttackBotType)UnityEngine.Random.Range(0, (int)AttackBotType.NotSet);
+    }
+    else
+    {
+        AttackBot = AttackBotPreset;
+    }
+    while (!isPlayersState)
+    {
+        yield return new WaitForSeconds(UnityEngine.Random.Range(GameManager.Instance.AttackIntervalLower, GameManager.Instance.AttackIntervalUpper) / 100.0f);
+        if (isPlayersState)
+            break;
+        switch (AttackBot)
+        {
+            case AttackBotType.Greedy: Greedy(); break;
+            case AttackBotType.NeutralTargeter: NeutralTargeter(); break;
+            case AttackBotType.Yunnan: Yunnan(); break;
+            default: Greedy(); break;
+        }
+    }
+    yield return null;
+}
+struct StateAndHealth
+{
+    public GameObject State;
+    public int Count;
+}
+void Greedy()
+{
+    StateAndHealth[] lowestHealth = new StateAndHealth[3];
+    lowestHealth[0].Count = 9999; lowestHealth[1].Count = 9999; lowestHealth[2].Count = 9999;
+    GameObject selected = null;
+    foreach (GameObject s in GameManager.Instance.States)
+    {
+        StateScript st = s.GetComponent<StateScript>();
+        if (st.team != team)
+        {
+            if (st.troopCount < lowestHealth[0].Count)
+            {
+                lowestHealth[2].Count = lowestHealth[1].Count; lowestHealth[2].State = lowestHealth[1].State;
+                lowestHealth[1].Count = lowestHealth[0].Count; lowestHealth[1].State = lowestHealth[0].State;
+                lowestHealth[0].Count = st.troopCount; lowestHealth[0].State = s;
+            }
+            else if (st.troopCount < lowestHealth[1].Count)
+            {
+                lowestHealth[2].Count = lowestHealth[1].Count; lowestHealth[2].State = lowestHealth[1].State;
+                lowestHealth[1].Count = st.troopCount; lowestHealth[1].State = s;
+            }
+            else if (st.troopCount < lowestHealth[2].Count)
+            {
+                lowestHealth[2].Count = st.troopCount; lowestHealth[2].State = s;
             }
         }
     }
-    void BuildAction(Build_Struct buildstruct)
+    if (lowestHealth[0].State == null)
+        return;
+    if (lowestHealth[1].State == null)
+        selected = lowestHealth[0].State;
+    else if (lowestHealth[2].State == null)
+        selected = lowestHealth[UnityEngine.Random.Range(0, 2)].State;
+    else
+        selected = lowestHealth[UnityEngine.Random.Range(0, 3)].State;
+    target = selected;
+    SendTroops();
+}
+void NeutralTargeter()
+{
+    List<GameObject> noneStates = new();
+
+    foreach (GameObject s in GameManager.Instance.States)
     {
-        BuildScript bs = null;
-        switch (buildstruct.Build)
+        StateScript st = s.GetComponent<StateScript>();
+        if (st.team == Team.None)
         {
-            case Build.Crossbow:
-                 bs = centerSpriteRenderer.gameObject.GetComponent<BuildScript>();
-                bs.team = this.team;
-                bs.Crossbow();
-                break;
-            case Build.Cannon:
+            noneStates.Add(s);
+        }
+    }
+    if (noneStates.Count != 0)
+    {
+        target = noneStates[UnityEngine.Random.Range(0, noneStates.Count)];
+    }
+    else
+    {
+        RandomAttack();
+    }
+    SendTroops();
+}
+struct StateAndTeam
+{
+    public StateScript stateScript;
+    public Team team;
+}
+void Yunnan()
+{
+    List<StateScript> BizimStateler = new();
+    foreach (GameObject s in GameManager.Instance.States)
+    {
+        StateScript st = s.GetComponent<StateScript>();
+        if (st.team == GameManager.Instance.PlayerTeam)
+        {
+            BizimStateler.Add(st);
+        }
+    } 
+    if (BizimStateler.Count >0)
+    {
+        target = BizimStateler[UnityEngine.Random.Range(0,BizimStateler.Count-1)].gameObject;            
+    }
+    else
+    {
+        RandomAttack();
+    }
+    SendTroops();
+}
+void Shuffle(List<int> list)
+{
+    for (int i = list.Count - 1; i > 0; i--)
+    {
+        int randomIndex = UnityEngine.Random.Range(0, i + 1);
+
+
+        int temp = list[i];
+        list[i] = list[randomIndex];
+        list[randomIndex] = temp;
+    }
+}
+void RandomAttack()
+{
+    List<int> randomizedStates = Enumerable.Range(0, GameManager.Instance.States.Length).ToList();
+    Shuffle(randomizedStates);
+    for (int i = 0; i < randomizedStates.Count; i++)
+    {
+        target = GameManager.Instance.States[i];
+        if (target.GetComponent<StateScript>().team != this.team)
+            break;
+    }
+}
+void BuildUpdate()
+{
+    for (int i = 0; i < buildStructs.Length; i++)
+    {
+        if (buildStructs[i].Bool)
+        {
+            centerSpriteRenderer.sprite = buildStructs[i].BuildSprite;
+            BuildAction(buildStructs[i]);
+            break;
+        }
+    }
+}
+void BuildAction(Build_Struct buildstruct)
+{
+    BuildScript bs = null;
+    switch (buildstruct.Build)
+    {
+        case Build.Crossbow:
                 bs = centerSpriteRenderer.gameObject.GetComponent<BuildScript>();
-                bs.team = this.team;
-                bs.Cannon();
-                break;
-            case Build.Mortar:
-                isMortar=true;
-                break;
-        }
+            bs.team = this.team;
+            bs.Crossbow();
+            break;
+        case Build.Cannon:
+            bs = centerSpriteRenderer.gameObject.GetComponent<BuildScript>();
+            bs.team = this.team;
+            bs.Cannon();
+            break;
+        case Build.Mortar:
+            isMortar=true;
+            break;
     }
-    [System.Serializable]
-    struct Build_Struct
-    {
-        public Build Build;
-        public bool Bool;
-        public Sprite BuildSprite;
-    }
-    [SerializeField] Build_Struct[] buildStructs=new Build_Struct[Enum.GetNames(typeof(Build)).Length];
-    private bool isFort,isBarracks =false;
+}
+[System.Serializable]
+struct Build_Struct
+{
+    public Build Build;
+    public bool Bool;
+    public Sprite BuildSprite;
+}
+[SerializeField] Build_Struct[] buildStructs=new Build_Struct[Enum.GetNames(typeof(Build)).Length];
+private bool isFort,isBarracks =false;
 
-    enum Build
+enum Build
+{
+    Fort,
+    Barracks,
+    BigFort,
+    Crossbow,
+    Cannon,
+    Mortar
+}
+bool blockAttack =false;
+public void DealDamageToState(int damage, Team attackerTeam)
+{
+    if (/*Fort*/buildStructs[0].Bool && blockAttack==true) { blockAttack = false; }
+    else
     {
-        Fort,
-        Barracks,
-        BigFort,
-        Crossbow,
-        Cannon,
-        Mortar
-    }
-    bool blockAttack =false;
-    public void DealDamageToState(int damage, Team attackerTeam)
-    {
-        if (/*Fort*/buildStructs[0].Bool && blockAttack==true) { blockAttack = false; }
-        else
+        blockAttack = true;
+        if (troopCount-damage < 0)
         {
-            blockAttack = true;
-            if (troopCount-damage < 0)
-            {
-                StateScript self = this;
-                GameManager.Instance.UpdateTeam(ref self, attackerTeam);
-                troopCount = Math.Abs(troopCount-damage);
-            }
-            else
-                troopCount -= damage;
+            StateScript self = this;
+            GameManager.Instance.UpdateTeam(ref self, attackerTeam);
+            troopCount = Math.Abs(troopCount-damage);
         }
+        else
+            troopCount -= damage;
     }
+}
 }
