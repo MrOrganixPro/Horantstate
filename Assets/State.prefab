@@ -206,19 +206,22 @@ MonoBehaviour:
     BuildSprite: {fileID: 21300000, guid: a864bc64844706545a18764a53f83486, type: 3}
   - Build: 1
     Bool: 0
-    BuildSprite: {fileID: 1325704698693499057, guid: 66b18ae0faee398459aec28b0eb9d3ab, type: 3}
+    BuildSprite: {fileID: 21300000, guid: 790e964963bbd964e8a3195e510f71ee, type: 3}
   - Build: 2
     Bool: 0
-    BuildSprite: {fileID: 21300000, guid: d92ad47998da04441a6f765717954173, type: 3}
+    BuildSprite: {fileID: 1325704698693499057, guid: 66b18ae0faee398459aec28b0eb9d3ab, type: 3}
   - Build: 3
     Bool: 0
-    BuildSprite: {fileID: 21300000, guid: c10353a71a596e2489cf1ab336b3f12b, type: 3}
+    BuildSprite: {fileID: 21300000, guid: d92ad47998da04441a6f765717954173, type: 3}
   - Build: 4
     Bool: 0
-    BuildSprite: {fileID: -633728959643716388, guid: 2b4011cd95cde7a4fb0ccf8baf09fec6, type: 3}
+    BuildSprite: {fileID: 21300000, guid: c10353a71a596e2489cf1ab336b3f12b, type: 3}
   - Build: 5
     Bool: 0
-    BuildSprite: {fileID: 21300000, guid: 62c9936edd9aed645a05fd6576b08cd8, type: 3}
+    BuildSprite: {fileID: -633728959643716388, guid: 2b4011cd95cde7a4fb0ccf8baf09fec6, type: 3}
+  - Build: 7
+    Bool: 0
+    BuildSprite: {fileID: 21300000, guid: 3984540178b435340bc5b46a39817e96, type: 3}
 --- !u!1 &7414077596298683285
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,18 +401,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24ceda8cad4cb74c8596ebec33761a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildScript
+  rangeOutline: {fileID: 7546046042137136219, guid: 42ff67c9bd0278243b293bee2b12ff48, type: 3}
   muzzleFlash: {fileID: 7687795348887547841, guid: 5192ceb29b3d0f03f9843cc18ffa04e1, type: 3}
   CannonBall: {fileID: 188647194317346462, guid: 76c3ba2ebd7df0b4ebde0acb8104ee1a, type: 3}
   lineRenderer: {fileID: 7880252813640165042}
   team: 0
-  cannonCooldown: 3.5
+  cannonCooldown: 2.5
   crossbowCooldown: 0.2
+  crossbowRadius: 3
+  cannonRadius: 2
+  boostRadius: 4
+  circle: {fileID: 5471032623918827621, guid: 92096ad6c264a1a4487c59382bcc7fa2, type: 3}
   AllLayers:
     serializedVersion: 2
     m_Bits: 960
   detectionLayer:
     serializedVersion: 2
     m_Bits: 960
+  rangeParentTransform: {fileID: 6021691468679957913}
 --- !u!120 &7880252813640165042
 LineRenderer:
   serializedVersion: 3
@@ -520,6 +529,11 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!4 &6021691468679957913 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2418376682869291038, guid: f53ce12bbab431443ada444a7df6c9b9, type: 3}
+  m_PrefabInstance: {fileID: 8223173501078058375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &6449647629101646928 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3143324402907804119, guid: f53ce12bbab431443ada444a7df6c9b9, type: 3}

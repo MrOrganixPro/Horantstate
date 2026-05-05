@@ -10,7 +10,7 @@ public class TroopScript : MonoBehaviour
     Vector2 targetPos;
     bool canMove;
     public int troopDamage =1;
-    [SerializeField]float speed;
+    public float speed;
     public GameObject sender;
     public GameObject target;
     [SerializeField]SpriteRenderer spriteRenderer;

@@ -1,0 +1,936 @@
+fileFormatVersion: 2
+guid: c93e85b1bd57b9c48b77bf3ccbcee22c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9025339675311957184
+    second: dashed_circle-removebg-preview_0
+  - first:
+      213: 7512951251092478338
+    second: dashed_circle-removebg-preview_1
+  - first:
+      213: 1296144201142674787
+    second: dashed_circle-removebg-preview_2
+  - first:
+      213: -2097756726628385330
+    second: dashed_circle-removebg-preview_3
+  - first:
+      213: -1815605519973450523
+    second: dashed_circle-removebg-preview_4
+  - first:
+      213: 3598779987395612930
+    second: dashed_circle-removebg-preview_5
+  - first:
+      213: -5007998928483412444
+    second: dashed_circle-removebg-preview_6
+  - first:
+      213: -1253244849708937175
+    second: dashed_circle-removebg-preview_7
+  - first:
+      213: 1236945332745196559
+    second: dashed_circle-removebg-preview_8
+  - first:
+      213: -4531354950671556747
+    second: dashed_circle-removebg-preview_9
+  - first:
+      213: 1205503650759819901
+    second: dashed_circle-removebg-preview_10
+  - first:
+      213: 7780115238209171733
+    second: dashed_circle-removebg-preview_11
+  - first:
+      213: -3935419430159472543
+    second: dashed_circle-removebg-preview_12
+  - first:
+      213: -4593741173430613382
+    second: dashed_circle-removebg-preview_13
+  - first:
+      213: -6777713766965086077
+    second: dashed_circle-removebg-preview_14
+  - first:
+      213: 3671865407343951636
+    second: dashed_circle-removebg-preview_15
+  - first:
+      213: -7398042000982818462
+    second: dashed_circle-removebg-preview_16
+  - first:
+      213: -4782479720947266275
+    second: dashed_circle-removebg-preview_17
+  - first:
+      213: 525355768250167797
+    second: dashed_circle-removebg-preview_18
+  - first:
+      213: -3897430676604611796
+    second: dashed_circle-removebg-preview_19
+  - first:
+      213: -2166392389008520218
+    second: dashed_circle-removebg-preview_20
+  - first:
+      213: -3693394374542610325
+    second: dashed_circle-removebg-preview_21
+  - first:
+      213: -1665223630887140606
+    second: dashed_circle-removebg-preview_22
+  - first:
+      213: 4565741215133869382
+    second: dashed_circle-removebg-preview_23
+  - first:
+      213: 645718130499501458
+    second: dashed_circle-removebg-preview_24
+  - first:
+      213: 1371188439942760622
+    second: dashed_circle-removebg-preview_25
+  - first:
+      213: -2745231788960694451
+    second: dashed_circle-removebg-preview_26
+  - first:
+      213: 388133797352896100
+    second: dashed_circle-removebg-preview_27
+  - first:
+      213: 8290500525392808518
+    second: dashed_circle-removebg-preview_28
+  - first:
+      213: 7077295216731913377
+    second: dashed_circle-removebg-preview_29
+  - first:
+      213: 5034939620251943659
+    second: dashed_circle-removebg-preview_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 420
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04b9ac3326d8fb280800000000000000
+      internalID: -9025339675311957184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 429
+        width: 25
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28991388b5d534860800000000000000
+      internalID: 7512951251092478338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 428
+        width: 25
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 365aace9844dcf110800000000000000
+      internalID: 1296144201142674787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 419
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecdf02c1f5543e2e0800000000000000
+      internalID: -2097756726628385330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 404
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ec7eb9266cadc6e0800000000000000
+      internalID: -1815605519973450523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 402
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2011085d45f61f130800000000000000
+      internalID: 3598779987395612930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 382
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42695301283008ab0800000000000000
+      internalID: -5007998928483412444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 379
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 920d28cf2749b9ee0800000000000000
+      internalID: -1253244849708937175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 354
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f04dadcf9338a2110800000000000000
+      internalID: 1236945332745196559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 351
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57f93063ea46d11c0800000000000000
+      internalID: -4531354950671556747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 322
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d72c9feee2fcab010800000000000000
+      internalID: 1205503650759819901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 318
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 511bf0d969588fb60800000000000000
+      internalID: 7780115238209171733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 286
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 168ac2701e49269c0800000000000000
+      internalID: -3935419430159472543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 282
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7a059fcdb0cf30c0800000000000000
+      internalID: -4593741173430613382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 249
+        width: 11
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38875c22d39b0f1a0800000000000000
+      internalID: -6777713766965086077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 245
+        width: 11
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41ff7c3322615f230800000000000000
+      internalID: 3671865407343951636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 212
+        width: 11
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 261cff12fffd45990800000000000000
+      internalID: -7398042000982818462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 208
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1dcd6f480831adb0800000000000000
+      internalID: -4782479720947266275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 176
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f1f04ba9407a4700800000000000000
+      internalID: 525355768250167797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 172
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c239548f27b89e9c0800000000000000
+      internalID: -3897430676604611796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_20
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 143
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eb8909a99d6fe1e0800000000000000
+      internalID: -2166392389008520218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_21
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 139
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6036f1826d6ebcc0800000000000000
+      internalID: -3693394374542610325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_22
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 114
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 203c2613eefe3e8e0800000000000000
+      internalID: -1665223630887140606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_23
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 111
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6452a60e175cc5f30800000000000000
+      internalID: 4565741215133869382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_24
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 90
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29db371f73d06f800800000000000000
+      internalID: 645718130499501458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_25
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 88
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea809ea0f90770310800000000000000
+      internalID: 1371188439942760622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_26
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 73
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4f33e89b3af6e9d0800000000000000
+      internalID: -2745231788960694451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_27
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 63
+        width: 25
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 466fa8cd1ade26500800000000000000
+      internalID: 388133797352896100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_28
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 62
+        width: 24
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64a4a3a8d46cd0370800000000000000
+      internalID: 8290500525392808518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_29
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 72
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ac70e3a08a973260800000000000000
+      internalID: 7077295216731913377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dashed_circle-removebg-preview_30
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 60
+        width: 25
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be248aa88e2bfd540800000000000000
+      internalID: 5034939620251943659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dashed_circle-removebg-preview_0: -9025339675311957184
+      dashed_circle-removebg-preview_1: 7512951251092478338
+      dashed_circle-removebg-preview_10: 1205503650759819901
+      dashed_circle-removebg-preview_11: 7780115238209171733
+      dashed_circle-removebg-preview_12: -3935419430159472543
+      dashed_circle-removebg-preview_13: -4593741173430613382
+      dashed_circle-removebg-preview_14: -6777713766965086077
+      dashed_circle-removebg-preview_15: 3671865407343951636
+      dashed_circle-removebg-preview_16: -7398042000982818462
+      dashed_circle-removebg-preview_17: -4782479720947266275
+      dashed_circle-removebg-preview_18: 525355768250167797
+      dashed_circle-removebg-preview_19: -3897430676604611796
+      dashed_circle-removebg-preview_2: 1296144201142674787
+      dashed_circle-removebg-preview_20: -2166392389008520218
+      dashed_circle-removebg-preview_21: -3693394374542610325
+      dashed_circle-removebg-preview_22: -1665223630887140606
+      dashed_circle-removebg-preview_23: 4565741215133869382
+      dashed_circle-removebg-preview_24: 645718130499501458
+      dashed_circle-removebg-preview_25: 1371188439942760622
+      dashed_circle-removebg-preview_26: -2745231788960694451
+      dashed_circle-removebg-preview_27: 388133797352896100
+      dashed_circle-removebg-preview_28: 8290500525392808518
+      dashed_circle-removebg-preview_29: 7077295216731913377
+      dashed_circle-removebg-preview_3: -2097756726628385330
+      dashed_circle-removebg-preview_30: 5034939620251943659
+      dashed_circle-removebg-preview_4: -1815605519973450523
+      dashed_circle-removebg-preview_5: 3598779987395612930
+      dashed_circle-removebg-preview_6: -5007998928483412444
+      dashed_circle-removebg-preview_7: -1253244849708937175
+      dashed_circle-removebg-preview_8: 1236945332745196559
+      dashed_circle-removebg-preview_9: -4531354950671556747
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

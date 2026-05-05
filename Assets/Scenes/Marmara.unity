@@ -264,7 +264,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5698667198850706753, guid: 748c2f203d4b5ef469ec195740fa8518, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -282,7 +282,7 @@ Transform:
   m_GameObject: {fileID: 84176475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.651518, y: 0.25112677, z: 0}
+  m_LocalPosition: {x: 6.8674088, y: 0.44723845, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -314,11 +314,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9374955
+      value: -2.7216046
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.6326032
+      value: -3.4364915
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -358,11 +358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -377,8 +377,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
-      propertyPath: buildStructs.Array.data[3].Bool
+      propertyPath: buildStructs.Array.data[2].Bool
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+      propertyPath: buildStructs.Array.data[3].Bool
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[4].Bool
@@ -441,11 +445,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5224953
+      value: -3.3066044
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0833968
+      value: 1.2795085
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -489,11 +493,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -501,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[0].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[1].Bool
@@ -807,7 +811,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1167255502120474389, guid: 5c3f47fddb9560b44a725a31f6db31ec, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -825,7 +829,7 @@ Transform:
   m_GameObject: {fileID: 500320765}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.342846, y: -4.2633586, z: 0}
+  m_LocalPosition: {x: 9.558737, y: -4.067247, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1074,11 +1078,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.1995044
+      value: 3.4153953
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25360316
+      value: -0.05749148
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1126,7 +1130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -1197,11 +1201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.1644955
+      value: -2.9486046
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.363397
+      value: 3.5595086
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1245,11 +1249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -1257,7 +1261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[0].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[1].Bool
@@ -1328,11 +1332,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.35649538
+      value: 0.8593955
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1813968
+      value: 1.3775085
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1376,7 +1380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _troopCount
@@ -1384,7 +1388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -1400,6 +1404,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[3].Bool
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+      propertyPath: buildStructs.Array.data[4].Bool
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+      propertyPath: buildStructs.Array.data[5].Bool
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6844336284803445849, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
@@ -1482,6 +1494,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   PlayerTeam: 0
+  teamColors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0.5, b: 0.5, a: 1}
+  - {r: 0.5, g: 0.72, b: 0.93, a: 1}
+  - {r: 0.46, g: 1, b: 0.62, a: 1}
+  - {r: 1, g: 0.95, b: 0.56, a: 1}
   AttackIntervalLower: 1300
   AttackIntervalUpper: 1800
   States:
@@ -1573,7 +1591,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 969943731402963181, guid: c0feb7221aba4304b91f8b6cc76f28c5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1591,7 +1609,7 @@ Transform:
   m_GameObject: {fileID: 1134046136}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9375758, y: -6.8391533, z: 0}
+  m_LocalPosition: {x: -2.721685, y: -6.6430416, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1664,7 +1682,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3104382975390813456, guid: 7c742ae748fa377448b067de0e2d951b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1682,7 +1700,7 @@ Transform:
   m_GameObject: {fileID: 1204037630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2167561, y: -4.992629, z: 0}
+  m_LocalPosition: {x: 1.432647, y: -4.7965174, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1714,11 +1732,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.7794952
+      value: -5.5636044
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.133603
+      value: -1.9374914
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1765,8 +1783,12 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+      propertyPath: _troopCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -1790,6 +1812,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[3].Bool
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+      propertyPath: buildStructs.Array.data[5].Bool
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6844336284803445849, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
@@ -1897,7 +1923,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8647080008076359870, guid: a90200b0f1950f042a0c345fa73d792a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1915,7 +1941,7 @@ Transform:
   m_GameObject: {fileID: 1284120471}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1868925, y: -7.0736065, z: 0}
+  m_LocalPosition: {x: -4.9710016, y: -6.877495, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2100,11 +2126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.8225045
+      value: 4.0383954
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.1026032
+      value: -2.9064915
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2148,11 +2174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -2160,7 +2186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[0].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[1].Bool
@@ -2268,7 +2294,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1375071372096300079, guid: de8929d22fb1e0046a47b5e063ec27fe, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2286,7 +2312,7 @@ Transform:
   m_GameObject: {fileID: 1580948594}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.346054, y: -0.79067767, z: 0}
+  m_LocalPosition: {x: 7.561945, y: -0.594566, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2359,7 +2385,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -336854749301252030, guid: 222fc0eebf1567f47b57cd2bd66c2897, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2377,7 +2403,7 @@ Transform:
   m_GameObject: {fileID: 1637153569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5576167, y: -4.2286386, z: 0}
+  m_LocalPosition: {x: 5.7735076, y: -4.032527, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2450,11 +2476,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.03424
+      value: -5.818349
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.19747
+      value: 2.3935816
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2498,11 +2524,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -2519,6 +2545,10 @@ PrefabInstance:
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[3].Bool
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+      propertyPath: buildStructs.Array.data[4].Bool
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6844336284803445849, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Name
@@ -2608,11 +2638,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.8425045
+      value: 5.0583954
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8226032
+      value: -0.62649155
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2656,11 +2686,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -2672,7 +2702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[1].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[3].Bool
@@ -2719,11 +2749,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.32449532
+      value: 0.89139557
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9056032
+      value: -2.7094915
       objectReference: {fileID: 0}
     - target: {fileID: 3705088465003159633, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2759,11 +2789,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+      propertyPath: _troopCount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -2783,6 +2817,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[3].Bool
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+      propertyPath: buildStructs.Array.data[5].Bool
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6844336284803445849, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
