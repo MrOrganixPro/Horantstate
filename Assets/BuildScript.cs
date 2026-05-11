@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
 using static StateScript;
@@ -12,14 +14,23 @@ public class BuildScript : MonoBehaviour
     Coroutine CannonCoroutine;
     [SerializeField] GameObject CannonBall;
     [SerializeField] LineRenderer lineRenderer;
-    public StateScript.Team team;
+    private StateScript.Team _team;
+
+    public StateScript.Team team
+    {
+        get => _team;
+        set
+        {
+            _team = value;
+        }
+    }
     [SerializeField] float cannonCooldown = 1.5f;
     [SerializeField] float crossbowCooldown = 0.2f;
     [Header("Radiuses")]
     [SerializeField] float crossbowRadius = 3f;
     [SerializeField] float cannonRadius = 2f;
     [SerializeField] float boostRadius = 1.5f;
-
+    [SerializeField] float bigFortRadius;
     public void Start()
     {
         lineRenderer.positionCount = 2;
@@ -27,47 +38,90 @@ public class BuildScript : MonoBehaviour
         lineRenderer.SetPosition(1, transform.position);
         lineRenderer.enabled = false;
     }
+    [SerializeField] GameObject RotatorPrefab;
+    GameObject rotator;
+    ROTATE rotatorScript;
+    public void BigFortControl()
+    {
+        StartCoroutine(BigFortControlCR());
+    }
+    WaitForSeconds three_tenth = new WaitForSeconds(0.3f);
+    List<StateScript> previouslyControlledStates;
+    IEnumerator BigFortControlCR()
+    {
+        previouslyControlledStates = new List<StateScript>();
+        StateScript thisState = this.GetComponentInParent<StateScript>();
+        FirstInstantiateShieldSprites(thisState);
+        while(true)
+        {
+            yield return three_tenth;
+            if(previouslyControlledStates.Count>0)
+            {
+                foreach(StateScript pcs in previouslyControlledStates)
+                {
+                    if(pcs.team != this.team)
+                    {
+                        pcs.shield.SetActive(false);
+                        pcs.UnconnectToBigFort();
+                    }
+                }
+                previouslyControlledStates.Clear();
+            }
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, bigFortRadius, 1<<12);
+            foreach(Collider2D hitCollider in hitColliders)
+            {
+                StateScript hitState=hitCollider.transform.parent.GetComponent<StateScript>();
+                if(hitState == thisState)
+                    continue;
+                if (hitState.team==this.team)
+                {
+                    hitState.shield.SetActive(true);
+                    previouslyControlledStates.Add(hitState);
+                    hitState.ConnectToBigFort(thisState);            
+                }           
+            }
+        }
+    }
+    void FirstInstantiateShieldSprites(StateScript thisState)
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, bigFortRadius, 1<<12);
+        foreach(Collider2D hitCollider in hitColliders)
+        {
+            StateScript hitState=hitCollider.transform.parent.GetComponent<StateScript>();
+            if(hitState == thisState)
+                continue;
+            GameObject shield =Instantiate(GameManager.Instance.Shield,hitCollider.transform.position,Quaternion.Euler(0,0,0));         
+            shield.transform.localScale = new Vector3(1.25f,1.25f,1);
+            shield.transform.parent = rangeParentTransform;
+            hitState.shield = shield;
+            shield.SetActive(false);
+        }
+    }
     public void Booster()
     {
-        StartCoroutine(BoosterCR());
         MakeRangeOutline(boostRadius);
+        rotator = Instantiate(RotatorPrefab,transform.position,Quaternion.identity);
+        
+        StateScript st = transform.parent.GetComponent<StateScript>();
+        st.Visuals.renderers.Add(rotator.transform.GetChild(0).GetComponent<SpriteRenderer>());//first child is the light
+        rotator.transform.SetParent(gameObject.transform);
+        
+        rotatorScript = rotator.GetComponent<ROTATE>(); 
+        rotatorScript.team = this.team;
+        StartCoroutine(BoosterCR());
     }
+    WaitForSeconds tenth  = new WaitForSeconds(0.1f); 
     IEnumerator BoosterCR()
     {
+        Team previousTeam = team;
         while (true)
         {
-            if (team == StateScript.Team.None)
+            if(team != previousTeam)
             {
-                yield return new WaitForSeconds(0.5f);
-                continue;
+                rotatorScript.team = this.team;
+                previousTeam = team;
             }
-            StartCoroutine(BoostEffect());
-            yield return new WaitForSeconds(2f);
-        }
-    }
-    [SerializeField]GameObject circle;
-    IEnumerator BoostEffect()
-    {
-        GameObject effectCircle=Instantiate(circle, transform.position, Quaternion.identity);
-        SpriteRenderer circleSR = effectCircle.GetComponent<SpriteRenderer>();
-        circleSR.color = GameManager.Instance.GetTeamColorSharp(team);
-        circleSR.color = new Color(circleSR.color.r, circleSR.color.g, circleSR.color.b, 0.15f);
-        for (int i = 0; i < 70; i++)
-        {
-            effectCircle.transform.localScale+= new Vector3(0.1f, 0.1f, 0);
-            yield return hundredth;
-        }
-        ApplyBoost();
-        circleSR.color = new Color(circleSR.color.r, circleSR.color.g, circleSR.color.b, 0.5f);
-        yield return new WaitForSeconds(0.25f);  
-        Destroy(effectCircle);
-    }
-    void ApplyBoost()
-    {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, boostRadius, detectionLayer);
-        foreach (Collider2D ally in hitColliders)
-        {
-            ally.GetComponent<TroopScript>().speed = 5f;
+            yield return tenth;
         }
     }
     public void Crossbow()
@@ -78,21 +132,11 @@ public class BuildScript : MonoBehaviour
         }
         MakeRangeOutline(crossbowRadius);
     }
-    int LayerAssignment(Team t)
-    {
-        switch (t)
-        {
-            case StateScript.Team.Blue: return 6;
-            case StateScript.Team.Red: return 7;
-            case StateScript.Team.Green: return 8;
-            case StateScript.Team.Yellow: return 9;
-            default: return -1;
-        }
-    }
+    
     void LayerUpdate()
     {
         detectionLayer = AllLayers;
-        int myLayerBit = 1 << LayerAssignment(team);
+        int myLayerBit = 1 << GameManager.Instance.LayerAssignment(team);
         detectionLayer &= ~myLayerBit;
     }
     IEnumerator CrossbowCR()
@@ -228,8 +272,7 @@ public class BuildScript : MonoBehaviour
         }
     }
     public LayerMask AllLayers;
-    public LayerMask detectionLayer; // Set this in the Inspector to avoid hitting everything
-
+    public LayerMask detectionLayer; 
     void MakeRangeOutline(float givenRadius)
     {
         GameObject range = Instantiate(rangeOutline, transform.position, Quaternion.identity);

@@ -248,3 +248,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LineTip
   line: {fileID: 5692307130240784865}
+  tip: {fileID: 8880005041378626376}

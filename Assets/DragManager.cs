@@ -5,6 +5,7 @@ using System.Xml;
 using NUnit.Framework;
 using NUnit.Framework.Internal.Commands;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngineInternal;
 
@@ -20,11 +21,13 @@ public class DragManager : MonoBehaviour
     {
         public GameObject state;
         public GameObject line;
-        public LineAndSelected(GameObject state, GameObject line)
+        public LineAndSelected(GameObject state, GameObject line,StateScript.Team team)
         {
             this.state = state;
             this.line = line;
+            this.team = team;
         }
+        public StateScript.Team team;
     }
 
     void Awake()
@@ -55,21 +58,45 @@ public class DragManager : MonoBehaviour
     }
     void StateHighLighter()
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (hit.collider != null && hit.collider.gameObject.CompareTag("Center"))
+        RaycastHit2D[] hits = Physics2D.RaycastAll(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        RaycastHit2D hit=default;
+        if (hits.Length==0)
+        {
+            if (highlightedState != null)
+                {
+                    highlightedState.SetActive(false);
+                    highlightedState = null;
+                }
+            return;
+        }
+        foreach(RaycastHit2D h in hits)
+        {
+            if(h.collider.gameObject.layer==12)//12 is center
+            {
+                hit = h;
+                break;
+            }
+        }
+        Collider2D hitCollider = hit.collider;
+        if (hitCollider==null)
+            {
+                if (highlightedState != null)
+                {
+                    highlightedState.SetActive(false);
+                    highlightedState = null;
+                }
+            }
+        else 
         {
             GameObject targetChild = hit.transform.GetChild(0).gameObject;
             if (highlightedState != null && highlightedState != targetChild)
+            {                
                 highlightedState.SetActive(false);
-            highlightedState = targetChild;
-            highlightedState.SetActive(true);
-        }
-        else
-        {
-            if (highlightedState != null)
+            }
+            else
             {
-                highlightedState.SetActive(false);
-                highlightedState = null;
+                highlightedState = targetChild;
+                highlightedState.SetActive(true);                
             }
         }
     }
@@ -77,13 +104,25 @@ public class DragManager : MonoBehaviour
 
     void StartDrag()
     {
-        RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (hit.collider == null)
+        RaycastHit2D[] hits = Physics2D.RaycastAll(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        RaycastHit2D hit=default;
+        if (hits.Length==0)
             return;
-        StateScript hitState = hit.collider.GetComponentInParent<StateScript>()!;
-        if (hitState == null)
+        foreach(RaycastHit2D h in hits)
+        {
+            if(h.collider.gameObject.layer==12)//12 is center
+            {
+                hit = h;
+                break;
+            }
+        }
+        Collider2D hitCollider = hit.collider;
+        if (hitCollider==null)
             return;
-        if (hit.collider != null && hitState.isPlayersState)
+        
+        StateScript hitState = hitCollider.GetComponentInParent<StateScript>()!;
+        
+        if (hitCollider != null && hitState.isPlayersState)
         {
             if (selected == null)
                 selected = new List<LineAndSelected>();
@@ -93,7 +132,8 @@ public class DragManager : MonoBehaviour
                     return;
             }
             GameObject newLine = ObjectPoolingLine();
-            LineAndSelected newLandS = (new LineAndSelected(hit.transform.parent.gameObject, newLine));
+            GameObject state = hit.transform.parent.gameObject;
+            LineAndSelected newLandS = (new LineAndSelected(state, newLine,state.GetComponent<StateScript>().team));
             selected.Add(newLandS);
             LineRenderer l = newLandS.line.GetComponent<LineRenderer>();
             l.SetPosition(0, newLandS.state.transform.GetChild(0).position);
@@ -108,6 +148,7 @@ public class DragManager : MonoBehaviour
             if (!l.activeSelf)
             {
                 l.SetActive(true);
+                //l.transform.GetChild(0).gameObject.SetActive(true); bu işlem line tip'te
                 return l;
             }
         }
@@ -119,11 +160,23 @@ public class DragManager : MonoBehaviour
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
+        LineAndSelected toBeRemoved = null;
         foreach (var s in selected)
         {
+            StateScript stateScript = s.state.GetComponent<StateScript>();
+            if(stateScript.team !=s.team)
+            {
+                toBeRemoved = s;
+                GameObject Line = s.line;
+                Renderer lineRenderer = Line.GetComponent<Renderer>();
+                Line.transform.GetChild(0).gameObject.SetActive(false);
+                Line.SetActive(false);
+                lineRenderer.enabled = false;
+            }
             LineRenderer l = s.line.GetComponent<LineRenderer>();
             l.SetPosition(1, mousePos);
         }
+        selected.Remove(toBeRemoved);
         //dragLine.SetPosition(1, mousePos);
     }
 
@@ -151,6 +204,7 @@ public class DragManager : MonoBehaviour
                 if (selected[i].state == target)
                 {
                     selected[i].line.SetActive(false);
+
                     selected.RemoveAt(i);
                 }
             }
@@ -178,10 +232,10 @@ public class DragManager : MonoBehaviour
         {
             GameObject Line = s.line;
             Renderer lineRenderer = Line.GetComponent<Renderer>();
+            Line.transform.GetChild(0).gameObject.GetComponent<Renderer>().enabled = false;
             Line.SetActive(false);
             lineRenderer.enabled = false;
         }
         selected.Clear();
-        line.transform.GetChild(0).gameObject.GetComponent<Renderer>().enabled = (false);
     }
 }

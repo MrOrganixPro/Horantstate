@@ -46,9 +46,9 @@ public class MortarShellScript : MonoBehaviour
         if(targetScript.team!=team)
         {
             if(targetScript.troopCount<=shellDamage)
-                targetScript.DealDamageToState(targetScript.troopCount+1,team);
+                targetScript.DealDamageToState(targetScript.troopCount+1,team,true);
             else
-                targetScript.DealDamageToState(shellDamage,team);
+                targetScript.DealDamageToState(shellDamage,team,true);
         }
         
         

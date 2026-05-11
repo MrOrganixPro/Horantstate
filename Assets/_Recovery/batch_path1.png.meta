@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: d92ad47998da04441a6f765717954173
+guid: 3ac322de4a9258b4e8d558721be4dc4a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4873822622288441958
-    second: big fort_0
-  - first:
-      213: -7901690989073439302
-    second: big fort_1
-  - first:
-      213: 6233548082101705225
-    second: big fort_2
-  - first:
-      213: -3136219446696114045
-    second: big fort_3
-  - first:
-      213: 6927494260888672534
-    second: big fort_4
+      213: 2031752628076209695
+    second: batch_path1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 220
+  spritePixelsToUnits: 54
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -125,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: big fort_0
+      name: batch_path1_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 300
-        width: 189
-        height: 85
+        x: 0
+        y: 22
+        width: 298
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,96 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9d0c3cc524bc5cb0800000000000000
-      internalID: -4873822622288441958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big fort_1
-      rect:
-        serializedVersion: 2
-        x: 184
-        y: 23
-        width: 159
-        height: 466
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab56f5f09ed875290800000000000000
-      internalID: -7901690989073439302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big fort_2
-      rect:
-        serializedVersion: 2
-        x: 312
-        y: 300
-        width: 189
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 90a5df334f2028650800000000000000
-      internalID: 6233548082101705225
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big fort_3
-      rect:
-        serializedVersion: 2
-        x: 15
-        y: 23
-        width: 166
-        height: 273
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 38881069709e974d0800000000000000
-      internalID: -3136219446696114045
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big fort_4
-      rect:
-        serializedVersion: 2
-        x: 333
-        y: 23
-        width: 167
-        height: 273
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 61993dba357632060800000000000000
-      internalID: 6927494260888672534
+      spriteID: f16e2f3204c323c10800000000000000
+      internalID: 2031752628076209695
       vertices: []
       indices: 
       edges: []
@@ -238,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -248,11 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      big fort_0: -4873822622288441958
-      big fort_1: -7901690989073439302
-      big fort_2: 6233548082101705225
-      big fort_3: -3136219446696114045
-      big fort_4: 6927494260888672534
+      batch_path1_0: 2031752628076209695
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

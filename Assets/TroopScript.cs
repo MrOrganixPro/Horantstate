@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Security.Cryptography;
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal.Internal;
@@ -59,19 +60,37 @@ public class TroopScript : MonoBehaviour
     }
     IEnumerator CollisionCheck()
     {
-        //6blue 7red 8green 9yellow
-        int allMasks = (1 << 6) | (1 << 7) | (1 << 8) | (1 << 9);
+        //6blue 7red 8green 9yellow 11boost
+        int allMasks = (1 << 6) | (1 << 7) | (1 << 8) | (1 << 9)|(1<<11);
         int myLayerBit = 1 << gameObject.layer;
         allMasks &= ~myLayerBit;
         WaitForSeconds s = new WaitForSeconds(0.03f);
         while(gameObject)
         {
-            Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 0.2f, allMasks);
+            Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 0.15f, allMasks);
             if(hitCollider != null)
             {
-                Destroy(hitCollider.gameObject);
-                Destroy(gameObject);
+                GameObject hitObject = hitCollider.gameObject;
+                if(hitObject.layer ==11)
+                {
+                    if(hitObject.transform.GetComponentInParent<ROTATE>().team==troopTeam)
+                    {
+                        speed = 5;
+                    }
+                    else
+                    {
+                        speed = 0.8f;
+                    }
+                }
+                else
+                {
+                    Destroy(hitCollider.gameObject);
+                    Destroy(gameObject);                    
+                }
             }
+            else
+                speed = 2;
+
             yield return s;
         }
     }
@@ -97,7 +116,7 @@ public class TroopScript : MonoBehaviour
         }
         else
         {
-            targetScript.DealDamageToState(troopDamage,troopTeam);
+            targetScript.DealDamageToState(troopDamage,troopTeam,false);
         }
         Destroy(gameObject);
     }

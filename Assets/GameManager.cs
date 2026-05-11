@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
         new Color(0.46f,1,0.62f),
         new Color(1,0.95f,0.56f)
     };
+    public GameObject Shield;
+    public int NeutralStateTroopLimit;
+    public float troopIncrementWaitTime;
+
     public int AttackIntervalLower;
     public int AttackIntervalUpper;
     public static GameManager Instance { get; private set; }
@@ -140,9 +144,15 @@ public class GameManager : MonoBehaviour
         if (GetTeamStats(PlayerTeam).count==0)
             Debug.Log("You Lost");
     }
-    // Update is called once per frame
-    void Update()
+    public int LayerAssignment(Team t)
     {
-        
+        switch (t)
+        {
+            case StateScript.Team.Blue: return 6;
+            case StateScript.Team.Red: return 7;
+            case StateScript.Team.Green: return 8;
+            case StateScript.Team.Yellow: return 9;
+            default: return -1;
+        }
     }
 }

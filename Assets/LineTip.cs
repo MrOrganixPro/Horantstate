@@ -4,9 +4,9 @@ using static UnityEngine.GraphicsBuffer;
 public class LineTip : MonoBehaviour
 {
     public LineRenderer line;
+    public GameObject tip;
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -24,6 +24,8 @@ public class LineTip : MonoBehaviour
         Vector2 direction = line.GetPosition(0) - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle+92);
-        GetComponent<Renderer>().enabled = true;    
+        GetComponent<Renderer>().enabled = true;
+        if(!tip.activeSelf)
+            tip.SetActive(true);
     }
 }

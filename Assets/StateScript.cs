@@ -16,13 +16,14 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class StateScript : MonoBehaviour
 {
     bool isMortar = false;
+    public float stateWaitTime;
     public float spaceBetweenTroops = 0.15f;
     public AttackBotType AttackBotPreset = AttackBotType.NotSet;
     [SerializeField] private CenterValue cv;
     Coroutine CurrentCR;
     [SerializeField] Collider2D StateArea;
     [SerializeField] Text troopCountText;
-
+    [HideInInspector]public GameObject shield;
     [SerializeField] private int _troopCount;
     void Awake()
     {
@@ -39,12 +40,12 @@ public class StateScript : MonoBehaviour
             UpdateTroopCountText();
         }
     }
-    [SerializeField] StateVisuals Visuals;
+    public StateVisuals Visuals;
     [Serializable]
-    struct StateVisuals
+    public struct StateVisuals
     {
-        public Renderer[] renderers;
-        public UnityEngine.UI.Image[] images;
+        public List<Renderer> renderers;
+        public List<UnityEngine.UI.Image> images;
     }
     [SerializeField] SpriteRenderer Transparent;
     #region team Property
@@ -129,16 +130,15 @@ public class StateScript : MonoBehaviour
     }
     IEnumerator TroopIncrementCR()
     {
-        float waitTime;
         int increment;
         while (true)
         {
+            float waitTime = GameManager.Instance.troopIncrementWaitTime;
             increment = 1;
-            waitTime = 0.5f;
             if (team == Team.None)
             {
                 yield return new WaitForSeconds(waitTime);
-                if (troopCount < 10)
+                if (troopCount < GameManager.Instance.NeutralStateTroopLimit)
                     troopCount += increment;
                 continue;
             }
@@ -202,7 +202,7 @@ public class StateScript : MonoBehaviour
         {
             Debug.Log($"Mortar Check: CurrentCR = {CurrentCR}, Troops = {troopCount}");
 
-            if (troopCount >= 30)
+            if (troopCount >= 20)
             {
                 if (CurrentCR == null)
                 {
@@ -240,7 +240,7 @@ public class StateScript : MonoBehaviour
     }
     IEnumerator SendMortarShell()
     {
-        troopCount -= 30;
+        troopCount -= 20;
 
         // Safety check: Don't spawn if references are missing
         if (MortarShell != null && centerSpriteRenderer != null && target != null)
@@ -263,13 +263,19 @@ public class StateScript : MonoBehaviour
     [SerializeField] GameObject MortarShell;
     IEnumerator sendingLoop()
     {
-        Debug.Log("SendingLoop(troop)");
         Vector3 CenterPos = StateArea.transform.position;
-
+        StateScript targetState = target.GetComponent<StateScript>();
+        if(targetState.connectedBigFort != null)
+        {
+           StartCoroutine(ShieldEffect(target.transform.GetChild(0).position));
+           target = targetState.connectedBigFort.gameObject;
+        }  
         switch (troopCount)
         {
             case < 20:
                 {
+
+
                     while (troopCount > 0)
                     {
                         GameObject troop = Instantiate(troopPrefab, CenterPos, Quaternion.identity);
@@ -393,7 +399,7 @@ public class StateScript : MonoBehaviour
         }
         while (!isPlayersState)
         {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(GameManager.Instance.AttackIntervalLower, GameManager.Instance.AttackIntervalUpper) / 100.0f);
+            yield return new WaitForSeconds(stateWaitTime+(UnityEngine.Random.Range(GameManager.Instance.AttackIntervalLower, GameManager.Instance.AttackIntervalUpper)) / 100.0f);
             if (isPlayersState)
                 break;
             switch (AttackBot)
@@ -479,7 +485,7 @@ public class StateScript : MonoBehaviour
     void Yunnan()
     {
         List<StateScript> BizimStateler = new();
-        Shuffle(BizimStateler);
+        Shuffle(ref BizimStateler);
         foreach (GameObject s in GameManager.Instance.States)
         {
             StateScript st = s.GetComponent<StateScript>();
@@ -498,7 +504,7 @@ public class StateScript : MonoBehaviour
         }
         SendTroops();
     }
-    void Shuffle<T>(List<T> list)
+    void Shuffle<T>(ref List<T> list)
     {
         for (int i = list.Count - 1; i > 0; i--)
         {
@@ -513,10 +519,10 @@ public class StateScript : MonoBehaviour
     void RandomAttack()
     {
         List<int> randomizedStates = Enumerable.Range(0, GameManager.Instance.States.Length).ToList();
-        Shuffle(randomizedStates);
+        Shuffle(ref randomizedStates);
         for (int i = 0; i < randomizedStates.Count; i++)
         {
-            target = GameManager.Instance.States[i];
+            target = GameManager.Instance.States[randomizedStates[i]];
             if (target.GetComponent<StateScript>().team != this.team)
                 break;
         }
@@ -557,6 +563,13 @@ public class StateScript : MonoBehaviour
             case Build.Fort:
                 isFort = true;
                 break;
+            case Build.BigFort:
+                isFort = true;
+                isBigFort = true;
+                bs = centerSpriteRenderer.gameObject.GetComponent<BuildScript>();
+                bs.team = this.team;
+                bs.BigFortControl();
+                break;
             case Build.Booster:
                 bs = centerSpriteRenderer.gameObject.GetComponent<BuildScript>();
                 bs.team = this.team;
@@ -572,7 +585,7 @@ public class StateScript : MonoBehaviour
         public Sprite BuildSprite;
     }
     [SerializeField] Build_Struct[] buildStructs = new Build_Struct[Enum.GetNames(typeof(Build)).Length];
-    private bool isFort, isBarracks, isBooster = false;
+    private bool isBigFort, isFort, isBarracks, isBooster = false;
 
     enum Build
     {
@@ -586,12 +599,22 @@ public class StateScript : MonoBehaviour
         Booster
     }
     bool blockAttack = false;
-    public void DealDamageToState(int damage, Team attackerTeam)
+    bool blockAttack2 = false; //for the big guy
+    public void DealDamageToState(int damage, Team attackerTeam,bool Unblockable)
     {
-        if (isFort && blockAttack == true) { blockAttack = false; }
+        
+        if(!Unblockable&&isBigFort&& (blockAttack2 ==true))
+        {
+            blockAttack2 = false;
+        }
+        else if (!Unblockable&&isFort && (blockAttack == true)) 
+        {
+            blockAttack = false;
+        }
         else
         {
             blockAttack = true;
+            blockAttack2 = true;
             if (troopCount - damage < 0)
             {
                 StateScript self = this;
@@ -601,5 +624,28 @@ public class StateScript : MonoBehaviour
             else
                 troopCount -= damage;
         }
+    }
+    public StateScript connectedBigFort;
+    public void ConnectToBigFort(StateScript st)
+    {
+        connectedBigFort = st;
+    }
+    public void UnconnectToBigFort()
+    {
+        connectedBigFort = null;
+    }
+    WaitForSeconds fivehundredth = new WaitForSeconds(0.05f);
+    IEnumerator ShieldEffect(Vector2 targetPos)
+    {
+        GameObject shield = Instantiate(GameManager.Instance.Shield,targetPos,Quaternion.Euler(0,0,0));
+        SpriteRenderer shieldSR = shield.GetComponent<SpriteRenderer>();
+        for(int i=0;i<28;i++)
+        {            
+            shield.transform.localScale = new Vector3(1+0.04f*i,1+0.04f*i,1);
+            if(i>2)
+                shieldSR.color = new Color(shieldSR.color.r,shieldSR.color.g,shieldSR.color.b,shieldSR.color.a-(i-2)*0.04f);
+            yield return fivehundredth;   
+        }
+        Destroy(shield);
     }
 }
