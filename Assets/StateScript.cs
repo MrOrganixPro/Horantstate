@@ -202,15 +202,11 @@ public class StateScript : MonoBehaviour
         {
             Debug.Log($"Mortar Check: CurrentCR = {CurrentCR}, Troops = {troopCount}");
 
-            if (troopCount >= 20)
+            if (troopCount >= 30)
             {
                 if (CurrentCR == null)
                 {
                     CurrentCR = StartCoroutine(SendMortarShell());
-                }
-                else
-                {
-                    Debug.Log("Mortar is currently cooling down or busy.");
                 }
             }
             else
@@ -240,8 +236,8 @@ public class StateScript : MonoBehaviour
     }
     IEnumerator SendMortarShell()
     {
-        troopCount -= 20;
-
+        troopCount -= 30;
+        CheckForBigFortProtection();
         // Safety check: Don't spawn if references are missing
         if (MortarShell != null && centerSpriteRenderer != null && target != null)
         {
@@ -256,20 +252,24 @@ public class StateScript : MonoBehaviour
             Debug.LogError("MortarShell or centerSpriteRenderer is missing in SendMortarShell!");
         }
 
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(5f);
 
         CurrentCR = null;
+    }
+    void CheckForBigFortProtection()
+    {
+        StateScript targetState = target.GetComponent<StateScript>();
+        if(targetState.connectedBigFort != null&&targetState.team != this.team)
+        {
+           StartCoroutine(ShieldEffect(target.transform.GetChild(0).position));
+           target = targetState.connectedBigFort.gameObject;
+        }  
     }
     [SerializeField] GameObject MortarShell;
     IEnumerator sendingLoop()
     {
         Vector3 CenterPos = StateArea.transform.position;
-        StateScript targetState = target.GetComponent<StateScript>();
-        if(targetState.connectedBigFort != null)
-        {
-           StartCoroutine(ShieldEffect(target.transform.GetChild(0).position));
-           target = targetState.connectedBigFort.gameObject;
-        }  
+        CheckForBigFortProtection();
         switch (troopCount)
         {
             case < 20:

@@ -45,7 +45,7 @@ public class BuildScript : MonoBehaviour
     {
         StartCoroutine(BigFortControlCR());
     }
-    WaitForSeconds three_tenth = new WaitForSeconds(0.3f);
+    WaitForSeconds two_tenth = new WaitForSeconds(0.2f);
     List<StateScript> previouslyControlledStates;
     IEnumerator BigFortControlCR()
     {
@@ -54,7 +54,7 @@ public class BuildScript : MonoBehaviour
         FirstInstantiateShieldSprites(thisState);
         while(true)
         {
-            yield return three_tenth;
+            yield return two_tenth;
             if(previouslyControlledStates.Count>0)
             {
                 foreach(StateScript pcs in previouslyControlledStates)

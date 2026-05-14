@@ -275,7 +275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _troopCount
@@ -299,7 +299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[2].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[3].Bool
@@ -434,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
@@ -458,7 +458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[3].Bool
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[4].Bool
@@ -466,7 +466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[5].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[6].Bool
@@ -858,7 +858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
@@ -1377,7 +1377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
@@ -1397,7 +1397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[2].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[3].Bool
@@ -1544,7 +1544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _troopCount
@@ -1552,11 +1552,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: stateWaitTime
-      value: 9999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _isPlayersState
@@ -1592,7 +1592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[7].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6844336284803445849, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: m_Name
@@ -1862,7 +1862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
@@ -1882,7 +1882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[3].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[4].Bool
@@ -2098,7 +2098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _troopCount
@@ -2126,7 +2126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[1].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[2].Bool
@@ -2516,7 +2516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
@@ -2552,7 +2552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[6].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[7].Bool
@@ -2805,7 +2805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
@@ -2821,7 +2821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[1].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[2].Bool
@@ -3001,7 +3001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: AttackBotPreset
@@ -3132,7 +3132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _team
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: _troopCount
@@ -3172,7 +3172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[4].Bool
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[5].Bool
