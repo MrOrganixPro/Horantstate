@@ -8,6 +8,7 @@ TagManager:
   - Darken
   - Center
   - Darken(Center)
+  - Transparent
   layers:
   - Default
   - TransparentFX

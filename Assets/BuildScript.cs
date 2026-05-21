@@ -103,7 +103,9 @@ public class BuildScript : MonoBehaviour
         rotator = Instantiate(RotatorPrefab,transform.position,Quaternion.identity);
         
         StateScript st = transform.parent.GetComponent<StateScript>();
-        st.Visuals.renderers.Add(rotator.transform.GetChild(0).GetComponent<SpriteRenderer>());//first child is the light
+        st.Visuals.renderers.Add(rotator.transform.GetChild(0).GetComponent<SpriteRenderer>());//first child is the rotating light
+        st.Visuals.renderers.Add(rotator.transform.GetChild(1).GetComponent<SpriteRenderer>());//first child is the background light
+
         rotator.transform.SetParent(gameObject.transform);
         
         rotatorScript = rotator.GetComponent<ROTATE>(); 

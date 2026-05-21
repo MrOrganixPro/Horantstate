@@ -102,6 +102,8 @@ public class StateScript : MonoBehaviour
             Color selectedColor = GameManager.Instance.GetTeamColor(team);
             if (s.CompareTag("Darken"))
                 s.color = ColorUtils.Darken(selectedColor, cv.centerDarkness);
+            else if(s.CompareTag("Transparent"))
+                s.color = new Color(selectedColor.r, selectedColor.g, selectedColor.b, 0.05f);
             else
                 s.color = selectedColor;
         }

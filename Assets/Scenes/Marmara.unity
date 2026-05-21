@@ -2421,6 +2421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5a2e9939bc254397d51bd639d7783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragManager
+  audioSource: {fileID: 0}
+  highlightClip: {fileID: 0}
   line: {fileID: 5271447893809218735, guid: 517194016bddd964283856287401a197, type: 3}
   target: {fileID: 0}
 --- !u!4 &1334586127

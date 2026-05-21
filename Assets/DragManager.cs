@@ -11,6 +11,8 @@ using UnityEngineInternal;
 
 public class DragManager : MonoBehaviour
 {
+    public AudioSource audioSource; 
+    public AudioClip highlightClip;
     private List<GameObject> lineBucket;
     private Camera cam;
     [SerializeField] private GameObject line;
@@ -95,9 +97,27 @@ public class DragManager : MonoBehaviour
             }
             else
             {
-                highlightedState = targetChild;
-                highlightedState.SetActive(true);                
+                if(highlightedState != null)
+                {
+                }
+                else
+                {
+                    audioSource = hit.collider.GetComponent<AudioSource>();
+                    highlightClip = audioSource.clip;
+                    HighlightSoundEffect();
+                    highlightedState = targetChild;
+                    highlightedState.SetActive(true);
+                }
             }
+        }
+    }
+    int sfxCounter = 0; 
+    void HighlightSoundEffect()
+    {
+        sfxCounter++;
+        if (audioSource != null && highlightClip != null)
+        {
+            audioSource.PlayOneShot(highlightClip);
         }
     }
 
