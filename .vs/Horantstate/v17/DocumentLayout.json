@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Salih\\Downloads\\Horantstate\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|C:\\Users\\Salih\\Downloads\\Horantstate\\assets\\statescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|C:\\Users\\Salih\\Downloads\\Horantstate\\assets\\dragmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|solutionrelative:assets\\dragmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|c:\\users\\salih\\downloads\\horantstate\\assets\\statescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|solutionrelative:assets\\statescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|c:\\users\\salih\\downloads\\horantstate\\assets\\buildscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|C:\\Users\\Salih\\Downloads\\Horantstate\\assets\\buildscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|solutionrelative:assets\\buildscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|C:\\Users\\Salih\\Downloads\\Horantstate\\assets\\boltscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|solutionrelative:assets\\boltscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|C:\\Users\\Salih\\Downloads\\Horantstate\\assets\\troopscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|solutionrelative:assets\\troopscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|C:\\Users\\Salih\\Downloads\\Horantstate\\assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,16 +31,8 @@
       "RelativeMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|solutionrelative:assets\\cannonballscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|C:\\Users\\Salih\\Downloads\\Horantstate\\assets\\dragmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|solutionrelative:assets\\dragmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|C:\\Users\\Salih\\Downloads\\Horantstate\\assets\\rotate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|solutionrelative:assets\\rotate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|C:\\Users\\Salih\\Downloads\\Horantstate\\assets\\troopscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E10C352-0EAB-D4C4-6A04-78520F437549}|Assembly-CSharp.csproj|solutionrelative:assets\\troopscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Salih\\Downloads\\Horantstate\\Library\\PackageCache\\com.unity.2d.animation@a6f2f1d22eb5\\Runtime\\SpriteSkin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,11 +50,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ROTATE.cs",
               "DocumentMoniker": "C:\\Users\\Salih\\Downloads\\Horantstate\\Assets\\ROTATE.cs",
               "RelativeDocumentMoniker": "Assets\\ROTATE.cs",
@@ -62,25 +62,24 @@
               "RelativeToolTip": "Assets\\ROTATE.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T18:03:54.3Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T18:03:54.3Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "DragManager.cs",
               "DocumentMoniker": "C:\\Users\\Salih\\Downloads\\Horantstate\\Assets\\DragManager.cs",
               "RelativeDocumentMoniker": "Assets\\DragManager.cs",
               "ToolTip": "C:\\Users\\Salih\\Downloads\\Horantstate\\Assets\\DragManager.cs",
               "RelativeToolTip": "Assets\\DragManager.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAtwHIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAuwG8AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-30T15:56:41.629Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "CannonBallScript.cs",
               "DocumentMoniker": "C:\\Users\\Salih\\Downloads\\Horantstate\\Assets\\CannonBallScript.cs",
               "RelativeDocumentMoniker": "Assets\\CannonBallScript.cs",
@@ -93,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\Salih\\Downloads\\Horantstate\\Assets\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\GameManager.cs",
@@ -106,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "BoltScript.cs",
               "DocumentMoniker": "C:\\Users\\Salih\\Downloads\\Horantstate\\Assets\\BoltScript.cs",
               "RelativeDocumentMoniker": "Assets\\BoltScript.cs",
@@ -119,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "BuildScript.cs",
               "DocumentMoniker": "C:\\Users\\Salih\\Downloads\\Horantstate\\Assets\\BuildScript.cs",
               "RelativeDocumentMoniker": "Assets\\BuildScript.cs",
@@ -132,7 +131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "TroopScript.cs",
               "DocumentMoniker": "C:\\Users\\Salih\\Downloads\\Horantstate\\Assets\\TroopScript.cs",
               "RelativeDocumentMoniker": "Assets\\TroopScript.cs",
@@ -145,13 +144,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "StateScript.cs",
               "DocumentMoniker": "C:\\Users\\Salih\\Downloads\\Horantstate\\Assets\\StateScript.cs",
               "RelativeDocumentMoniker": "Assets\\StateScript.cs",
               "ToolTip": "C:\\Users\\Salih\\Downloads\\Horantstate\\Assets\\StateScript.cs",
               "RelativeToolTip": "Assets\\StateScript.cs",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAmwGkAAABbAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAAApwIQAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-16T14:28:12.688Z",
               "EditorCaption": ""

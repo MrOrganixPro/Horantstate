@@ -104,6 +104,8 @@ public class StateScript : MonoBehaviour
                 s.color = ColorUtils.Darken(selectedColor, cv.centerDarkness);
             else if(s.CompareTag("Transparent"))
                 s.color = new Color(selectedColor.r, selectedColor.g, selectedColor.b, 0.05f);
+            else if(s.CompareTag("Transparent(Completely)"))
+                s.color = new Color(selectedColor.r, selectedColor.g, selectedColor.b, 0f);
             else
                 s.color = selectedColor;
         }
@@ -128,7 +130,7 @@ public class StateScript : MonoBehaviour
     void TransparencyFix()
     {
         Color c = ColorUtils.Darken(new Color(Transparent.color.r, Transparent.color.g, Transparent.color.b), 0.4f);
-        Transparent.color = new Color(c.r, c.g, c.b, 0.3f);
+        Transparent.color = new Color(c.r, c.g, c.b, 0);
     }
     IEnumerator TroopIncrementCR()
     {

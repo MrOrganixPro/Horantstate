@@ -371,9 +371,17 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3143324402907804119, guid: f53ce12bbab431443ada444a7df6c9b9, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4897784067943810944, guid: f53ce12bbab431443ada444a7df6c9b9, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897784067943810944, guid: f53ce12bbab431443ada444a7df6c9b9, type: 3}
+      propertyPath: m_TagString
+      value: Transparent(Completely)
       objectReference: {fileID: 0}
     - target: {fileID: 4922564248309608305, guid: f53ce12bbab431443ada444a7df6c9b9, type: 3}
       propertyPath: m_Name
@@ -557,7 +565,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 317ac60d76feb274da83994d59c9dd9a, type: 3}
+  m_Resource: {fileID: 8300000, guid: 865ada1ac036ce547ba032b4c294ec35, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 2
