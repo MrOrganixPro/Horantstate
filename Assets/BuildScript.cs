@@ -47,41 +47,161 @@ public class BuildScript : MonoBehaviour
     }
     WaitForSeconds two_tenth = new WaitForSeconds(0.2f);
     List<StateScript> previouslyControlledStates;
+    Coroutine highlightingCR = null;
+    Coroutine deHighlightingCR = null;
     IEnumerator BigFortControlCR()
     {
         previouslyControlledStates = new List<StateScript>();
         StateScript thisState = this.GetComponentInParent<StateScript>();
         FirstInstantiateShieldSprites(thisState);
-        while(true)
+        
+        Team lastKnownTeam = this.team; // Track team to detect changes
+
+        // Do an initial scan right away
+        ScanAndApplyShields(thisState);
+
+        while (true)
         {
             yield return two_tenth;
-            if(previouslyControlledStates.Count>0)
+
+            // Since everything is stationary, we only need to re-evaluate 
+            // if the Big Fort itself changes teams!
+            if (this.team != lastKnownTeam)
             {
-                foreach(StateScript pcs in previouslyControlledStates)
-                {
-                    if(pcs.team != this.team)
-                    {
-                        pcs.shield.SetActive(false);
-                        pcs.UnconnectToBigFort();
-                    }
-                }
-                previouslyControlledStates.Clear();
+                lastKnownTeam = this.team;
+                ScanAndApplyShields(thisState);
+                continue;
             }
-            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, bigFortRadius, 1<<12);
-            foreach(Collider2D hitCollider in hitColliders)
+            if(AnyTrackedStateChangedTeam())
             {
-                StateScript hitState=hitCollider.transform.parent.GetComponent<StateScript>();
-                if(hitState == thisState)
-                    continue;
-                if (hitState.team==this.team)
-                {
-                    hitState.shield.SetActive(true);
-                    previouslyControlledStates.Add(hitState);
-                    hitState.ConnectToBigFort(thisState);            
-                }           
+                ScanAndApplyShields(thisState);
             }
         }
     }
+    private bool AnyTrackedStateChangedTeam()
+    {
+        foreach (StateScript state in previouslyControlledStates)
+        {
+            // If an asset in our list no longer matches the fort's team, we need a refresh
+            if (state.team != this.team)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+    private void ScanAndApplyShields(StateScript thisState)
+    {
+        // 1. Clean up states that are no longer on our team
+        if (previouslyControlledStates.Count > 0)
+        {
+            List<StateScript> statesToLoss = new List<StateScript>();
+            foreach (StateScript pcs in previouslyControlledStates)
+            {
+                if (pcs.team != this.team)
+                {
+                    statesToLoss.Add(pcs);
+                    pcs.UnconnectToBigFort();
+                    
+                    // Turn off the shield instantly. If the mouse is hovering over it,
+                    // the shield disappears from the selection visual instantly.
+                    if (pcs.shield != null) pcs.shield.SetActive(false);
+                }
+            }
+
+            if (statesToLoss.Count > 0)
+            {
+                previouslyControlledStates.RemoveAll(x => statesToLoss.Contains(x));
+            }
+        }
+
+        // 2. Scan for new allies in range
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, bigFortRadius, 1 << 12);
+
+        foreach (Collider2D hitCollider in hitColliders)
+        {
+            StateScript hitState = hitCollider.transform.parent.GetComponent<StateScript>();
+            
+            if (hitState == thisState) continue;
+
+            if (hitState.team == this.team && !previouslyControlledStates.Contains(hitState))
+            {
+                previouslyControlledStates.Add(hitState);
+                hitState.ConnectToBigFort(thisState);            
+                
+                // Turn the shield structural object ON. 
+                // Note: It still won't be visible to the player unless the parent 
+                // selection object is activated by DragManager's hover check.
+                if (hitState.shield != null)
+                {
+                    hitState.shield.SetActive(true);
+                    
+                    // Match the alpha of the shield to whatever the parent's current alpha state is
+                    SpriteRenderer shieldRenderer = hitState.shield.GetComponent<SpriteRenderer>();
+                    SpriteRenderer parentRenderer = hitState.shield.transform.parent.GetComponent<SpriteRenderer>();
+                    if (shieldRenderer != null && parentRenderer != null)
+                    {
+                        shieldRenderer.color = new Color(shieldRenderer.color.r, shieldRenderer.color.g, shieldRenderer.color.b, parentRenderer.color.a);
+                    }
+                }
+            }           
+        }
+    }
+    /*
+    IEnumerator GraduallyHighlightState()
+    {
+        Debug.Log("Coroutine Started");
+
+        while (highlightedState != null)
+        {
+            SpriteRenderer renderer = highlightedState.GetComponent<SpriteRenderer>();
+            if (renderer == null) break;
+
+            // 1. Calculate what the target alpha would be
+            float nextAlpha = renderer.color.a + transparencyChange;
+
+            // 2. Handle the FADING UP boundary
+            if (transparencyChange > 0f && nextAlpha >= 0.3f)
+            {
+                renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0.3f);
+
+                // Stay alive, but just wait here as long as we are supposed to hold the highlight
+                while (transparencyChange > 0f)
+                {
+                    yield return three_hundredth;
+                }
+                continue; // Re-evaluate nextAlpha once transparencyChange flips to negative
+            }
+
+            // 3. Handle the FADING DOWN boundary
+            if (transparencyChange < 0f && nextAlpha <= 0f)
+            {
+                renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0f);
+                highlightedState.SetActive(false);
+
+                // Clean up reference variable so a brand new state can be highlighted later
+                highlightedState = null;
+                Debug.Log("Fully faded out. Clearing state target.");
+                break;
+            }
+
+            // 4. Apply alpha safely if no boundaries were crossed
+            renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, nextAlpha);
+
+            // Essential single yield per frame loop execution step
+            yield return three_hundredth;
+        }
+
+        // Direct, absolute cleanup execution zone
+        HighlightingCR = null;
+        Debug.Log("Coroutine cleanly ended and tracker set to null.");
+    }
+    */
+
     void FirstInstantiateShieldSprites(StateScript thisState)
     {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, bigFortRadius, 1<<12);

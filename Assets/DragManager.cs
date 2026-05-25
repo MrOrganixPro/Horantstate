@@ -141,44 +141,61 @@ public class DragManager : MonoBehaviour
             SpriteRenderer renderer = highlightedState.GetComponent<SpriteRenderer>();
             if (renderer == null) break;
 
+            // Grab all child sprite renderers (like your shield) so they fade together!
+            SpriteRenderer[] childRenderers = highlightedState.GetComponentsInChildren<SpriteRenderer>();
+
             // 1. Calculate what the target alpha would be
             float nextAlpha = renderer.color.a + transparencyChange;
 
             // 2. Handle the FADING UP boundary
-            if (transparencyChange > 0f && nextAlpha >= 0.3f)
+            if (transparencyChange > 0f && nextAlpha >= 0.6f)
             {
-                renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0.3f);
+                nextAlpha = 0.6f;
+                ApplyAlphaToGroup(renderer, childRenderers, nextAlpha);
 
                 // Stay alive, but just wait here as long as we are supposed to hold the highlight
                 while (transparencyChange > 0f)
                 {
                     yield return three_hundredth;
                 }
-                continue; // Re-evaluate nextAlpha once transparencyChange flips to negative
+                continue; 
             }
 
             // 3. Handle the FADING DOWN boundary
             if (transparencyChange < 0f && nextAlpha <= 0f)
             {
-                renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0f);
+                ApplyAlphaToGroup(renderer, childRenderers, 0f);
                 highlightedState.SetActive(false);
 
-                // Clean up reference variable so a brand new state can be highlighted later
                 highlightedState = null;
                 Debug.Log("Fully faded out. Clearing state target.");
                 break;
             }
 
             // 4. Apply alpha safely if no boundaries were crossed
-            renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, nextAlpha);
+            ApplyAlphaToGroup(renderer, childRenderers, nextAlpha);
 
-            // Essential single yield per frame loop execution step
             yield return three_hundredth;
         }
 
-        // Direct, absolute cleanup execution zone
         HighlightingCR = null;
         Debug.Log("Coroutine cleanly ended and tracker set to null.");
+    }
+
+    // Helper helper method to cleanly apply alpha down to the nested shields
+    private void ApplyAlphaToGroup(SpriteRenderer mainRenderer, SpriteRenderer[] children, float mainAlpha)
+    {
+        mainRenderer.color = new Color(mainRenderer.color.r, mainRenderer.color.g, mainRenderer.color.b, mainAlpha);
+        float fadeProgress = Mathf.InverseLerp(0f, 0.3f, mainAlpha);
+
+        foreach (SpriteRenderer child in children)
+        {
+            if (child != mainRenderer && child != null)
+            {
+                // Child elements (shields) map directly to the progress, ending at full 1.0 alpha
+                child.color = new Color(child.color.r, child.color.g, child.color.b, fadeProgress);
+            }
+        }
     }
     /*
     void StateHighLighter()
