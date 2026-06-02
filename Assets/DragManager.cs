@@ -130,7 +130,7 @@ public class DragManager : MonoBehaviour
 
     Coroutine HighlightingCR;
     float transparencyChange = 0.04f;
-    WaitForSeconds three_hundredth = new WaitForSeconds(0.03f);
+    WaitForSeconds one_hundredth = new WaitForSeconds(0.01f);
 
     IEnumerator GraduallyHighlightState()
     {
@@ -156,7 +156,7 @@ public class DragManager : MonoBehaviour
                 // Stay alive, but just wait here as long as we are supposed to hold the highlight
                 while (transparencyChange > 0f)
                 {
-                    yield return three_hundredth;
+                    yield return one_hundredth;
                 }
                 continue; 
             }
@@ -175,7 +175,7 @@ public class DragManager : MonoBehaviour
             // 4. Apply alpha safely if no boundaries were crossed
             ApplyAlphaToGroup(renderer, childRenderers, nextAlpha);
 
-            yield return three_hundredth;
+            yield return one_hundredth;
         }
 
         HighlightingCR = null;
@@ -308,6 +308,7 @@ public class DragManager : MonoBehaviour
     {
         if (audioSource != null && highlightClip != null)
         {
+            audioSource.volume = 0.2f; 
             audioSource.PlayOneShot(highlightClip);
         }
     }

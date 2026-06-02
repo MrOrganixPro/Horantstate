@@ -59,7 +59,7 @@ public class StateScript : MonoBehaviour
             _team = value;
             StopSendingTroops();
             UpdateVisuals();
-            TransparencyFix();
+            //TransparencyFix();
         }
     }
     #endregion team Property
@@ -127,11 +127,12 @@ public class StateScript : MonoBehaviour
             i.color = selectedColor;
         }
     }
-    void TransparencyFix()
+    /*void TransparencyFix()
     {
         Color c = ColorUtils.Darken(new Color(Transparent.color.r, Transparent.color.g, Transparent.color.b), 0.4f);
         Transparent.color = new Color(c.r, c.g, c.b, 0);
     }
+    */
     IEnumerator TroopIncrementCR()
     {
         int increment;
@@ -194,7 +195,7 @@ public class StateScript : MonoBehaviour
     {
         BuildUpdate();
         UpdateTroopCountText();
-        TransparencyFix();
+        //TransparencyFix();
         StartCoroutine(TroopIncrementCR());
         UpdateVisuals();
     }
@@ -270,8 +271,15 @@ public class StateScript : MonoBehaviour
         }  
     }
     [SerializeField] GameObject MortarShell;
+
+
+    public AudioSource audioSource;
+    public AudioClip marchClip;
+
+
     IEnumerator sendingLoop()
     {
+        audioSource.PlayOneShot(marchClip); 
         Vector3 CenterPos = StateArea.transform.position;
         CheckForBigFortProtection();
         switch (troopCount)

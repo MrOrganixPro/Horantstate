@@ -41,14 +41,16 @@ public class BuildScript : MonoBehaviour
     [SerializeField] GameObject RotatorPrefab;
     GameObject rotator;
     ROTATE rotatorScript;
+    public AudioSource audioSource;
+    public AudioClip arrowShotClip;
+    public AudioClip cannonShotClip;
     public void BigFortControl()
     {
         StartCoroutine(BigFortControlCR());
     }
     WaitForSeconds two_tenth = new WaitForSeconds(0.2f);
     List<StateScript> previouslyControlledStates;
-    Coroutine highlightingCR = null;
-    Coroutine deHighlightingCR = null;
+
     IEnumerator BigFortControlCR()
     {
         previouslyControlledStates = new List<StateScript>();
@@ -64,8 +66,9 @@ public class BuildScript : MonoBehaviour
         {
             yield return two_tenth;
 
-            // Since everything is stationary, we only need to re-evaluate 
-            // if the Big Fort itself changes teams!
+            ScanAndApplyShields(thisState);
+
+            /*
             if (this.team != lastKnownTeam)
             {
                 lastKnownTeam = this.team;
@@ -75,7 +78,7 @@ public class BuildScript : MonoBehaviour
             if(AnyTrackedStateChangedTeam())
             {
                 ScanAndApplyShields(thisState);
-            }
+            }*/
         }
     }
     private bool AnyTrackedStateChangedTeam()
@@ -302,6 +305,9 @@ public class BuildScript : MonoBehaviour
             this.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
             //
             //
+            audioSource.volume = 0.1f;
+            audioSource.PlayOneShot(arrowShotClip);
+
             lineRenderer.SetPosition(1, nearestEnemy.position);
             lineRenderer.enabled = true;
             Destroy(nearestEnemy.gameObject);
@@ -362,9 +368,11 @@ public class BuildScript : MonoBehaviour
             //
             StartCoroutine(CannonShock());
             float angleRad = angle * Mathf.Deg2Rad;
+            
             Vector2 forwardDir = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
             Vector2 leftDir = new Vector2(-Mathf.Sin(angleRad), Mathf.Cos(angleRad)); // Rotated 90 degrees left
             Vector2 muzzlePosition = (Vector2)transform.position + (forwardDir * 1.2f) + (leftDir * 0.05f);
+            
             GameObject mFlash = Instantiate(muzzleFlash, muzzlePosition, Quaternion.Euler(0, 0, angle));
             yield return hundredth;
             yield return hundredth;
@@ -377,11 +385,40 @@ public class BuildScript : MonoBehaviour
         }
     }
     WaitForSeconds hundredth = new WaitForSeconds(0.01f);
+
+
+
+    GameObject spriteCopy;
+    SpriteRenderer sr;
+    SpriteRenderer spriteCopySR;
+
     IEnumerator CannonShock()
     {
+        audioSource.volume = 0.1f;
+        audioSource.PlayOneShot(cannonShotClip);    
+        if (!spriteCopy)
+        {
+            spriteCopy = new GameObject();
+            spriteCopy.SetActive(false);
+        }
+        spriteCopy.transform.position = transform.position; 
+        spriteCopy.transform.rotation = transform.rotation;
+        spriteCopy.transform.localScale = transform.localScale;
+
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        if(!spriteCopySR)
+            spriteCopySR = spriteCopy.AddComponent<SpriteRenderer>();
+        spriteCopySR.sprite = sr.sprite;
+        spriteCopySR.sortingLayerID = sr.sortingLayerID;
+        spriteCopySR.sortingOrder = sr.sortingOrder;
+        spriteCopySR.color = sr.color;
+        
+        spriteCopy.SetActive(true);
+        sr.enabled = false;
+
         for (int i = 0; i < 5; i++)
         {
-            transform.position += -transform.right * (1f / 10f);
+            spriteCopy.transform.position += -transform.right * (1f / 10f);
             yield return hundredth;
         }
     }
@@ -389,9 +426,11 @@ public class BuildScript : MonoBehaviour
     {
         for (int i = 0; i < 50; i++)
         {
-            transform.position += transform.right * (1f / 100f);
+            spriteCopy.transform.position += transform.right * (1f / 100f);
             yield return hundredth;
         }
+        spriteCopy.SetActive(false);
+        sr.enabled = true;
     }
     public LayerMask AllLayers;
     public LayerMask detectionLayer; 

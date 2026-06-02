@@ -1673,7 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35596031886c1fd41ae86f930b6ddb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  PlayerTeam: 0
+  PlayerTeam: 3
   teamColors:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -2114,12 +2114,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: Visuals.renderers.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: 'Visuals.renderers.Array.data[1]'
       value: 
       objectReference: {fileID: 218475648}
+    - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+      propertyPath: 'Visuals.renderers.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1758748856}
     - target: {fileID: 6151856285087470048, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
       propertyPath: buildStructs.Array.data[0].Bool
       value: 0
@@ -2725,6 +2729,11 @@ Transform:
   - {fileID: 1839910980}
   m_Father: {fileID: 252612392}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1758748856 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6449647629101646928, guid: bb2b9d253199c274789946659b4c0e64, type: 3}
+  m_PrefabInstance: {fileID: 1247765975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1834805396
 PrefabInstance:
   m_ObjectHideFlags: 0
