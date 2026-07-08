@@ -6,7 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/Menu.unity
+    guid: 91d308a9a0374f447a45a59f74b5aef1
+  - enabled: 1
+    path: Assets/Scenes/Marmara.unity
+    guid: 6787472ad52d77a44830824c8dbf0f20
+  - enabled: 1
+    path: Assets/Scenes/Balkans.unity
+    guid: dd68cbf8195b9934c95798b0b5003acc
+  - enabled: 1
+    path: "Assets/Scenes/Do\u011Fu Anadolu.unity"
+    guid: 28ccee9266f9b4749981dab1694dd380
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

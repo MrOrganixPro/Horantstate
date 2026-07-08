@@ -1708,8 +1708,8 @@ MonoBehaviour:
   Shield: {fileID: 8209170095757983057, guid: a03df66c7af54d948a01d273fcc4e633, type: 3}
   NeutralStateTroopLimit: 10
   troopIncrementWaitTime: 0.5
-  AttackIntervalLower: 1200
-  AttackIntervalUpper: 1800
+  AttackIntervalLower: 1500
+  AttackIntervalUpper: 2000
   States:
   - {fileID: 119012418}
   - {fileID: 1247765977}
@@ -2183,6 +2183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5a2e9939bc254397d51bd639d7783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragManager
+  audioSource: {fileID: 0}
+  highlightClip: {fileID: 0}
   line: {fileID: 5271447893809218735, guid: 517194016bddd964283856287401a197, type: 3}
   target: {fileID: 0}
 --- !u!4 &1334586127
